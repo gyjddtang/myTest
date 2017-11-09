@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>generator1</title>
+</head>
+<body>
+  <h1>这是页面内容</h1>
+
+  <script>
+    function* firstGenerator() {
+      yield 'hello';
+      yield 'world';
+      return 'ending';
+    }
+    let hw = firstGenerator();
+
+    console.log(hw.next());
+    console.log(hw.next());
+    console.log(hw.next());
+    console.log(hw.next());
+  </script>
+</body>
+</html>

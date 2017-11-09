@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>对象模板/构造函数</title>
+</head>
+
+<body>
+    <script>
+        function Student(name, age) {
+            this.name = name;
+            this.age = age;
+            this.intro = function () {
+                document.write("My name is " + this.name + ". " + "I'm " + this.age + " years old." + "<br>");
+            }
+        }
+
+        var hmm = new Student("韩梅梅", 19);
+        var lilei = new Student("李雷", 17);
+        hmm.intro();
+        lilei.intro();
+    </script>
+</body>
+
+</html>

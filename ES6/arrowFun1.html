@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var a = [
+			"Hydrogen",
+			"Helium",
+			"Lithium",
+			"Beryl­lium"
+		];
+
+		//ES5
+		// var a1 = a.map(function(ele, index) {
+		// 	return ele.length;
+		// });
+
+		//箭头函数
+		var a1 = a.map(ele => ele.length);
+
+		console.log(a1);
+	</script>
+</body>
+</html>

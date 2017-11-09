@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>transition css动画</title>
+  <style>
+    .image {
+      display: block;
+      width: 400px;
+    }
+
+    .bounce-enter-active {
+      animation: bounce-in .5s;
+    }
+
+    .bounce-leave-active {
+      animation: bounce-in .5s reverse;
+    }
+
+    @keyframes bounce-in {
+      0% {
+        transform: scale(0);
+      }
+      50% {
+        transform: scale(1.5);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="demo">
+    <button @click="toggle">toggle</button>
+    <transition name="bounce">
+      <img v-if="visible" class="image" src="./image/2.jpg" alt="">
+    </transition>
+  </div>
+
+  <script src="./js/vue2.3.0.js"></script>
+  <script>
+    var vm = new Vue({
+      el: "#demo",
+      data: {
+        visible: false
+      },
+      methods: {
+        toggle () {
+          this.visible = !this.visible
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>date</title>
+</head>
+
+<body>
+    <script>
+        //小明2013年6月29日入职
+        //合同签3年，求合同到期时间
+        //到期前1个月要续签（如果续签日期碰到周末则提前到上周五），求续签日期
+        //提前一周提醒，求提醒日期
+
+        var hire = new Date("2013-06-29");
+        document.write("签合同日期：" + hire + "<br>");
+        hire.setFullYear(hire.getFullYear() + 3);
+        document.write("合同到期日期：" + hire + "<br>");
+        hire.setMonth(hire.getMonth() - 1);
+        if (hire.getDay() == 0) {
+            hire.setDate(hire.getDate() - 2);
+        } else if (hire.getDay() == 6) {
+            hire.setDate(hire.getDate() - 1);
+        }
+        document.write("续约合同日期：" + hire + "<br>");
+        hire.setDate(hire.getDate() - 7);
+        document.write("提醒续约日期：" + hire.toLocaleString() + "<br>");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>把字符编码（并补齐），然后解码</title>
+</head>
+
+<body>
+    <script>
+        //第一种方法编码
+        /*
+        var result = [];
+        var input = prompt("请输入编码内容：");
+        for (var i = 0; i < input.length; i++) {
+            var num = input.charCodeAt(i);
+            if (num < 10000) {
+                var arr = [0, 0, 0, 0, 0];
+                var code = num + "";
+                var start = 5 - code.length;
+                for (var j = 0; j < code.length; j++, start++) {
+                    arr[start] = code.charAt(j);
+                }
+                num = arr.join("");
+            }
+            result.push(num);
+        }
+        document.write("编码的字符串：" + input + "<br>");
+        document.write("编码结果：" + result.join(""));
+        */
+
+
+        //第二种方法编码
+        var result = [];
+        var input = prompt("请输入编码内容：");
+        for (var i = 0; i < input.length; i++) {
+            var num = input.charCodeAt(i);
+            if (num < 10000) {
+                num = num + 100000 + "";
+                num = num.substr(1);
+            }
+            result.push(num);
+        }
+        result = result.join("");
+        document.write("编码的字符串：" + input + "<br>");
+        document.write("编码结果：" + result + "<br>");
+
+
+        //解码
+        var char = [];
+        for (var i = 0; i < result.length / 5; i++) {
+            var code = result.substr(i * 5, 5);
+            char.push(String.fromCharCode(code));
+        }
+        char = char.join("");
+        document.write("解码结果：" + char);
+    </script>
+</body>
+
+</html>

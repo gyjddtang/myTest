@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>只当事件在该元素本身（而不是子元素）触发时触发回调</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+    <div id="example" class="d1 f-box f-box-jc" v-on:click.self="doThis">
+        <div class="d2 f-box f-box-jc">
+            <div class="d3"></div>
+        </div>
+    </div>
+
+
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#example",
+            methods: {
+                doThis: function (event) {
+                    event.target.style.background = "black";
+                    alert(event.target.className);
+                    event.target.style.background = "";
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

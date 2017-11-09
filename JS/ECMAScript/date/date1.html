@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>date</title>
+</head>
+
+<body>
+    <script>
+        var now = new Date();
+        var next = new Date(now.getTime());
+        var d = now.getDate();
+        d += 20;
+        next.setDate(d);
+        document.write(now + "<br>");
+        document.write(next);
+    </script>
+</body>
+
+</html>

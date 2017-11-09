@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js模拟重载</title>
+</head>
+
+<body>
+    <button onclick="calc(5)">算平方</button>
+    <button onclick="calc(5,5)">算平方</button>
+    <script>
+        function calc() {
+            if (arguments.length == 1) {
+                var n = parseFloat(arguments[0]);
+                alert(n * n);
+            } else {
+                var n = parseFloat(arguments[0]);
+                var m = parseFloat(arguments[1]);
+                alert(n + m);
+            }
+        }
+    </script>
+</body>
+
+</html>

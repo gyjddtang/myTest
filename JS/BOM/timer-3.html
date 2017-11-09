@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>广告弹框自动循环</title>
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+    <div class="ad-box">
+        <span onclick="hide()">关闭</span>
+    </div>
+
+
+    <script>
+        var timer = null;
+
+        function moveUp() {
+            var div = document.querySelector(".ad-box");
+            var cssStyle = document.defaultView.getComputedStyle(div, null);
+            var bottom = parseInt(cssStyle.bottom);
+            if (bottom != 0) {
+                bottom += 10;
+                div.style.bottom = bottom + "px";
+            } else {
+                clearInterval(timer);
+                timer = null;
+            }
+        }
+
+        function moveDown() {
+            var div = document.querySelector(".ad-box");
+            var cssStyle = document.defaultView.getComputedStyle(div, null);
+            var bottom = parseInt(cssStyle.bottom);
+            if (bottom != -200) {
+                bottom -= 10;
+                div.style.bottom = bottom + "px";
+            } else {
+                clearInterval(timer);
+                timer = null;
+                setTimeout(function () {
+                    timer = setInterval(moveUp, 100);
+                }, 2000);
+            }
+        }
+        window.onload = function () {
+            moveUp();
+            timer = setInterval(moveUp, 100);
+        }
+
+        function hide() {
+            if (timer == null) {
+                timer = setInterval(moveDown, 100);
+            }
+        }
+    </script>
+</body>
+
+</html>

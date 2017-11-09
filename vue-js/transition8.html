@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>实例-动态过渡</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .listBox {
+      width: 40px;
+      height: 60px;
+      padding-top: 20px;
+      background: #f0ad4e;
+      margin: 40px 200px;
+    }
+    .listBox ul {
+      position: relative;
+    }
+    .listBox ul li {
+      list-style: none;
+      width: 40px;
+      height: 40px;
+      box-sizing: border-box;
+      line-height: 40px;
+      text-align: center;
+      border: 1px solid rgba(64, 117, 255, 0.63);
+      background: #fff;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .list-next-enter,
+    .list-prev-leave-to {
+      transform: translateX(40px);
+    }
+    .list-next-leave-to,
+    .list-prev-enter {
+      transform: translateX(-40px);
+    }
+    .list-prev-enter-active,
+    .list-prev-leave-active,
+    .list-next-enter-active,
+    .list-next-leave-active {
+      transition: all .4s;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo">
+    <div class="listBox">
+      <transition-group
+        tag="ul"
+        :name="listName"
+      >
+        <!----
+        -- v-if：DOM结构不存在，快速切换不影响
+        -- v-show：DOM结构已经存在，两个选项快速切换时，因为key值相同，导致原DOM没销毁，出现平移现象
+        ---->
+        <li v-for="(item, index) of list" v-if="index + 1 === initCurrent" :key="index">
+          {{ item }}
+        </li>
+      </transition-group>
+    </div>
+    <button @click="prev">prev</button>
+    <button @click="next">next</button>
+  </div>
+
+  <script src="js/vue2.3.0.js"></script>
+  <script>
+    var listData = [1, 2]
+    var vm = new Vue({
+      el: '#demo',
+      data: {
+        list: [],
+        initCurrent: 1,
+        listName: 'list-init'
+      },
+      mounted () {
+        this.initList()
+      },
+      methods: {
+        initList () {
+          listData.map((ele, index) => {
+            this.list.push(ele)
+          })
+        },
+
+        next () {
+          this.listName = 'list-next'
+          if (this.initCurrent === this.list.length) {
+            this.initCurrent = 1
+          } else {
+            this.initCurrent++
+          }
+        },
+
+        prev () {
+          this.listName = 'list-prev'
+          if (this.initCurrent === 1) {
+            this.initCurrent = this.list.length
+          } else {
+            this.initCurrent--
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

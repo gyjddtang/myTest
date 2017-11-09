@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>元素指定名称的属性值的操作</title>
+</head>
+
+<body>
+    <a id="a1Id" class="a1Class" href="javascript:void(0)">百度搜索</a>
+
+
+    <script>
+        var aObj = document.getElementById("a1Id");
+        console.log(aObj["className"]);
+        console.log(aObj.className);
+        console.log(aObj.getAttribute("class"));
+        aObj.href = "https://www.baidu.com";
+        aObj.target = "_blank";
+    </script>
+</body>
+
+</html>

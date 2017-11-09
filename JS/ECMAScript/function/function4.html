@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>闭包1</title>
+</head>
+
+<body>
+    <script>
+        function counter(n) {
+            function getUnique() {
+                return n++;
+            }
+            return getUnique;
+        }
+        var c = counter(1001);
+        document.write(c() + "<br>");
+        document.write(c() + "<br>");
+        n = 0;
+        document.write(c() + "<br>");
+        document.write(c() + "<br>");
+        c = null;
+        var c = counter(10001);
+        document.write(c() + "<br>");
+        document.write(c() + "<br>");
+
+
+        /*
+        function counter() {
+            var n = 0;
+
+            function getUnique() {
+                return n += 1;
+            }
+            return getUnique;
+        }
+        var c = counter();
+        document.write(c() + "<br>");
+        document.write(c() + "<br>");
+        n = 0;
+        document.write(c() + "<br>");
+        document.write(c() + "<br>");
+        c = null;
+        var c = counter();
+        document.write(c() + "<br>");
+        document.write(c() + "<br>");
+        */
+    </script>
+</body>
+
+</html>

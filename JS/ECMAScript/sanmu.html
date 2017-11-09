@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>三目运算</title>
+</head>
+
+<body>
+    <script>
+        //三目基本运算
+        var num1 = 1;
+        var num2 = 2;
+        var num3 = 3;
+        var t = num3;
+        var r = t == 1 ? "a" :
+            t == 2 ? "b" :
+            "c";
+        alert(r);
+
+        //两个数比较
+        var score1 = 100,
+            score2 = 80;
+        var s = score1 > score2 ? score1 : score2;
+        alert(s);
+
+        //三个数取最大值
+        var a = 10,
+            b = 18,
+            c = 12;
+        function getMax(a, b, c) {
+            var max = a > b ? a : b;
+            max = max > c ? max : c;
+            return max;
+        }
+        alert(getMax(a, b, c));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>实例-列表过渡</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .listBox {
+      margin: 60px 250px;
+      height: 60px;
+      width: 40px;
+      padding-top: 20px;
+      background: rgba(241, 0, 255, 0.69);
+    }
+
+    .listBox ul {
+      position: relative;
+    }
+
+    .listItem {
+      list-style: none;
+      width: 40px;
+      height: 40px;
+      box-sizing: border-box;
+      line-height: 40px;
+      text-align: center;
+      border: 1px solid rgba(64, 117, 255, 0.63);
+      background: #fff;
+      position: absolute;
+      top: 0;
+    }
+
+    .list-enter,
+    .list-leave-to {
+      opacity: 0;
+    }
+
+    .list-enter-active,
+    .list-leave-active {
+      transition: opacity .5s;
+    }
+
+    .list-move {
+      transition: transform .5s;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo">
+    <div class="listBox">
+      <transition-group name="list" tag="ul">
+        <li v-for="(item, index) of list" :key="item.key" class="listItem" :style="{left: (index + 1 - current) * 40  + 'px'}">
+          {{ item.num }}
+        </li>
+      </transition-group>
+    </div>
+    <button @click="prev">prev</button>
+    <button @click="next">next</button>
+  </div>
+
+  <script src="./js/vue2.3.0.js"></script>
+  <script>
+    var listData = [1, 2, 3, 4, 5]
+    var vm = new Vue({
+      el: "#demo",
+      data: {
+        list: [],
+        nextKey: 0,
+        current: 1
+      },
+      mounted () {
+        this.ininList()
+      },
+      methods: {
+        ininList () {
+          let reset
+          listData.map((ele, index) => {
+            let _temp = {}
+            _temp.num = index + 1
+            _temp.key = index + 1
+            this.nextKey = index + 1
+            this.list.push(_temp)
+          })
+          if (this.list.length <= 2) return
+          // current 首位和末位移动补齐
+          if (this.current === 1) {
+            this.lastMove()
+            this.current++
+          } else if (this.current === this.list.length) {
+            this.firstMove()
+            this.current--
+          }
+        },
+
+        prev () {
+          if (this.list.length <= 2) {
+            this.onlyTwo()
+          } else if (this.current <= 2) {
+            this.lastMove()
+          } else {
+            this.current--
+          }
+        },
+
+        next () {
+          if (this.list.length <= 2) {
+            this.onlyTwo()
+          } else if (this.current >= this.list.length - 1) {
+            this.firstMove()
+          } else {
+            this.current++
+          }
+        },
+
+        onlyTwo () {
+          this.current = this.current === 1 ? 2 : 1
+        },
+
+        lastMove () {
+          let term = this.list.pop()
+          term.key = this.nextKey++
+          this.list.unshift(term)
+        },
+
+        firstMove () {
+          let term = this.list.shift()
+          term.key = this.nextKey++
+          this.list.push(term)
+        }
+      }
+    })
+  </script>
+</body>
+</html>

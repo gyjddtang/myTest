@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <bookstore>
+        <book id="001">
+            <title>html入门</title>
+            <author>高源杰</author>
+            <year>2013</year>
+            <price>30.00</price>
+        </book>
+        <book id="002">
+            <title>css入门</title>
+            <author>高源杰</author>
+            <year>2014</year>
+            <price>35.00</price>
+        </book>
+        <book id="003">
+            <title>javaScript入门</title>
+            <author>高源杰</author>
+            <year>2015</year>
+            <price>40.00</price>
+        </book>
+    </bookstore>

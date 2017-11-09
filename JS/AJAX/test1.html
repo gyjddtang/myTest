@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>省市二级联动</title>
+</head>
+
+<body>
+    <select id="province">
+        <option>--请选择--</option>
+    </select>
+    <select id="cities">
+        <option>--请选择--</option>
+    </select>
+
+
+    <script src="../js/common.js"></script>
+    <script>
+        var select = document.querySelector("#province");
+        var slCity = document.querySelector("#cities");
+        var xhr = getXHR();
+        xhr.open("get", "../PHP/server1.php");
+        xhr.send(null);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var data = xhr.responseText;
+                var proArr = data.split(",");
+                for (var i = 0; i < proArr.length; i++) {
+                    select.add(new Option(proArr[i]));
+                }
+            }
+        }
+        select.onchange = function () {
+            for (var n = slCity.options.length - 1; n > 0; n--) {
+                slCity.remove(n);
+            }
+            var provinceValue = select.value;
+            xhr.open("post", "../PHP/server2.php");
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send("province=" + provinceValue);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var data = xhr.responseText;
+                    var cityArr = data.split(",");
+                    for (var i = 0; i < cityArr.length; i++) {
+                        slCity.add(new Option(cityArr[i]));
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

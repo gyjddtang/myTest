@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>遍历节点树（递归）</title>
+</head>
+
+<body>
+    <ul class="ul1">
+        <li>Tab1</li>
+        <li>Tab2</li>
+        <li>Tab3</li>
+    </ul>
+
+
+    <script>
+        //节点树
+        /*
+        var blank = [];
+
+        function getChild(parent) {
+            var child = parent.childNodes;
+            blank.push(" ");
+            for (var i = 0; i < child.length; i++) {
+                if (child[i].nodeType == 1) {
+                    console.log(blank.join("") + child[i].nodeName);
+                    getChild(child[i]);
+                }
+            }
+            blank.pop();
+        }
+        getChild(document);
+        */
+
+
+        //元素树
+        var blank = [];
+
+        function getChildEl(parent) {
+            var child = parent.children;
+            blank.push(" ");
+            for (var i = 0; i < child.length; i++) {
+                console.log(blank.join("") + child[i].nodeName);
+                getChildEl(child[i]);
+            }
+            blank.pop();
+        }
+        getChildEl(document);
+    </script>
+</body>
+
+</html>

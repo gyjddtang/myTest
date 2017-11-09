@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>事件对象中的坐标</title>
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body style="height:1000px">
+    <div class="div-box">
+        <p></p>
+    </div>
+    <span></span>
+
+
+    <script>
+        var div = document.querySelector(".div-box");
+        var p = document.querySelector(".div-box p");
+        var span = document.querySelector("span");
+        div.onclick = show;
+
+        function show() {
+            var evt = window.event || arguments[0];
+            p.style.left = (evt.offsetX || evt.layerX) + "px";
+            p.style.top = (evt.offsetY || evt.layerY) + "px";
+            var str1 = "相对于事件源原点&nbsp&nbspx:" + (evt.offsetX || evt.layerX) + "px, y:" + (evt.offsetY || evt.layerY) + "px";
+            var str2 = "相对于页面原点&nbsp&nbsp&nbspx:" + evt.pageX + "px, y:" + evt.pageY + "px";
+            var str3 = "相对于显示区域原点&nbspx:" + (evt.x || evt.clientX) + "px, y:" + (evt.y || evt.clientY) + "px";
+            span.innerHTML = str1 + "<br>" + str2 + "<br>" + str3;
+        }
+    </script>
+</body>
+
+</html>

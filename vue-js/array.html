@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>$set()</title>
+</head>
+
+<body>
+    <ul id="example">
+        <li v-for="item in items">
+            {{ item.name }}
+        </li>
+    </ul>
+
+
+    <script src="js/vue2.3.0.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#example",
+            data: {
+                items: [
+                    {
+                        name: "Gao"
+                    },
+                    {
+                        name: "Song"
+                    }
+                ]
+            }
+        })
+
+        //不能直接用索引设置元素，不能触发视图更新
+        //vm.items[0] = "{name:'Zhao'}";
+
+        //vue1.0
+        // vm.items.$set(0, {
+        //     name: "Zhao"
+        // });
+
+        //vue2.0
+        // Vue.set(vm.items, 0, {
+        //   name: 'Liu'
+        // });
+        vm.items.splice(0, 1, {
+          name: 'Xi'
+        });
+
+        //不能直接修改数组的长度
+        //vm.items.length = 0;
+
+        //vue1.0
+        //this.items.$remove(item);
+
+        // vue2.0
+        vm.items.splice(0);
+    </script>
+</body>
+
+</html>

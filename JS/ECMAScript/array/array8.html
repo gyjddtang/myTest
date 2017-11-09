@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>按城市找区</title>
+</head>
+
+<body>
+    <button onclick="getAreaByCity('昆明市')">昆明市</button>
+    <button onclick="getAreaByCity('大理市')">大理市</button>
+    <button onclick="getAreaByCity('曲靖市')">曲靖市</button>
+    <script>
+        //二位数组
+        /*var cities = ["昆明市", "大理市", "曲靖市"],
+            area = [
+                ["五华区", "盘龙区", "官渡区"],
+                ["下关市", "大理镇", "凤仪镇"],
+                ["麒麟区", "珠源区"]
+            ];
+
+        function getAreaByCity(city) {
+            var index;
+
+            for (var i = 0; i < cities.length; i++) {
+                if (city == cities[i]) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index != undefined) {
+                alert(area[index].toString());
+            }
+        }*/
+
+
+        //关联数组
+        var cities = {
+            "昆明市": ["五华区", "盘龙区", "官渡区"],
+            "大理市": ["下关市", "大理镇", "凤仪镇"],
+            "曲靖市": ["麒麟区", "珠源区"]
+        };
+
+        function getAreaByCity(city) {
+            alert(cities[city]);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>页面跳转并自动关闭（1）</title>
+</head>
+
+<body>
+    <a href="javascript:pay()">付款</a>
+
+
+    <script>
+        var sign = null;
+
+        function pay() {
+            if (sign == null) {
+                sign = window.open("timer-2.html", "pay");
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>统计一段文字里边的汉子、英文、数字、其它字符个数</title>
+</head>
+
+<body>
+    <script>
+        var chiCount = 0,
+            engCount = 0,
+            numCount = 0,
+            other = 0;
+        var input = prompt("请输入一段文字：");
+        for (var i = 0; i < input.length; i++) {
+            var code = input.charCodeAt(i);
+            if (code >= 48 && code <= 57) {
+                numCount++;
+            } else if ((code >= 65 && code <= 90) || (code >= 97 && code <= 122)) {
+                engCount++;
+            } else if (code >= 19968 && code <= 40869) {
+                chiCount++;
+            } else {
+                other++;
+            }
+        }
+        document.write("汉字：" + chiCount + "个" + "<br>" +
+            "英文：" + engCount + "个" + "<br>" +
+            "数字：" + numCount + "个" + "<br>" +
+            "其它字符：" + other + "个" + "<br>");
+    </script>  
+</body>
+
+</html>

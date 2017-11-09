@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>随机生成验证码并验证用户输入验证码</title>
+</head>
+
+<body>
+    <script>
+        var codes = [];
+        for (var i = 48; i < 58; i++) {
+            codes.push(i);
+        }
+        for (var i = 65; i < 91; i++) {
+            codes.push(i);
+        }
+        for (var i = 97; i < 123; i++) {
+            codes.push(i);
+        }
+
+        function getCode() {
+            var arr = [];
+            for (var i = 0; i < 4; i++) {
+                var index = Math.floor(Math.random() * (codes.length - 1 - 0 + 1) + 0);
+                var chat = String.fromCharCode(codes[index]);
+                arr.push(chat);
+            }
+            return arr.join("");
+        }
+        while (true) {
+            var code = getCode();
+            var input = prompt("请输入验证码：" + code);
+            var reg = /^[a-zA-Z0-9]{4}$/;
+            if (reg.test(input)) {
+                if (input.toLowerCase() == code.toLowerCase()) {
+                    document.write("登录成功！");
+                    break;
+                } else {
+                    alert("验证码错误！");
+                }
+            } else {
+                alert("验证码格式错误！");
+            }
+        }
+    </script>
+</body>
+
+</html>

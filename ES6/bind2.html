@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>apply  call  bind</title>
+</head>
+<body>
+
+  <script>
+    let num = {
+      first: 2,
+      second: 4
+    }
+
+    function sum(a, b) {
+      console.log(a + b + this.first * this.second);
+    }
+
+    sum.apply(num, [2, 4]);
+    sum.call(num, 2, 6);
+
+    let other = sum.bind(num);
+    other(2, 8);
+  </script>
+</body>
+</html>

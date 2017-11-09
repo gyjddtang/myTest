@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>transition 过渡模式</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      position: relative;
+      margin: 40px 200px;
+    }
+
+    .box1,
+    .box2 {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .box1 {
+      background: rgba(244, 144, 24, 0.72);
+    }
+
+    .box2 {
+      background: rgba(224, 66, 103, 0.71);
+    }
+
+    .toggle-enter {
+      transform: translateX(200px);
+    }
+
+    .toggle-leave-to {
+      transform: translateX(-200px);
+    }
+
+    .toggle-enter-active,
+    .toggle-leave-active {
+      transition: all .5s;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo">
+    <button @click="toggle">toggle</button>
+    <div class="box">
+    <!-- in-out: 新元素先进行过渡，完成之后当前元素过渡离开。
+    out-in: 当前元素先进行过渡，完成之后新元素过渡进入。 -->
+      <transition name="toggle" mode="in-out">
+        <div v-if="show1" class="box1" key="box1">内容一</div>
+        <div v-else class="box2" key="box2">内容二</div>
+      </transition>
+    </div>
+  </div>
+
+  <script src="./js/vue2.3.0.js"></script>
+  <script>
+    var vm = new Vue({
+      el: "#demo",
+      data: {
+        show1: true
+      },
+      methods: {
+        toggle () {
+          this.show1 = !this.show1
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax的post请求</title>
+</head>
+
+<body>
+    <button class="bt">Ajax请求</button>
+
+
+    <script src="../js/common.js"></script>
+    <script>
+        var bt = document.querySelector(".bt");
+        bt.onclick = function () {
+            var xhr = getXHR();
+            xhr.open("post", "../PHP/server.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send("a=ajax&j=javascript");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var data = xhr.responseText;
+                    alert(data);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>滑块选取颜色（RGB）</title>
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+    <div>
+        R:0
+        <input type="range" min="0" max="255" value="0" onchange="changeRgb()" id="colorR">255
+        <br> G:0
+        <input type="range" min="0" max="255" value="0" onchange="changeRgb()" id="colorG">255
+        <br> B:0
+        <input type="range" min="0" max="255" value="0" onchange="changeRgb()" id="colorB">255
+    </div>
+    <div id="rgb-div"></div>
+
+
+    <script>
+        //封装
+        function $(id) {
+            return document.getElementById(id);
+        }
+
+        function changeRgb() {
+            var r = $("colorR").value;
+            var g = $("colorG").value;
+            var b = $("colorB").value;
+            var color = "rgb(" + r + "," + g + "," + b + ")";
+            $("rgb-div").style.backgroundColor = color;
+        }
+    </script>
+</body>
+
+</html>

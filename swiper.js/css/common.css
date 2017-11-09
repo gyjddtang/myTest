@@ -1,0 +1,245 @@
+/*重置*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+ol,
+li,
+img,
+a,
+em,
+strong,
+form,
+input,
+textarea,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-style: normal;
+    font-weight: normal;
+    list-style: none;
+}
+
+
+/* ui-base */
+
+header {
+    height: 2.75rem;
+}
+
+.header-btn {
+    width: 2rem;
+}
+
+.space-w {
+    width: 100%;
+}
+
+.space-h {
+    height: 100%;
+}
+
+.space-p {
+    padding: 0 .9375rem;
+}
+
+.space-m {
+    margin: 0 .9375rem;
+}
+
+.pl15 {
+    padding-left: .9375rem;
+}
+
+.pr15 {
+    padding-right: .9375rem;
+}
+
+.mt10 {
+    margin-top: .625rem;
+}
+
+.mb10 {
+    margin-bottom: .625rem;
+}
+
+.ml10 {
+    margin-left: .625rem;
+}
+
+.mr10 {
+    margin-right: .625rem;
+}
+
+.mt15 {
+    margin-top: .9375rem;
+}
+
+.mb15 {
+    margin-bottom: .9375rem;
+}
+
+.ml15 {
+    margin-left: .9375rem;
+}
+
+.mr15 {
+    margin-right: .9375rem;
+}
+
+.bdt {
+    border-top: 1px solid;
+}
+
+.bdb {
+    border-bottom: 1px solid;
+}
+
+.dbl {
+    border-left: 1px solid;
+}
+
+.dbr {
+    border-right: 1px solid;
+}
+
+
+/* ui-color */
+
+.tx-white {
+    color: white;
+}
+
+.theme-bc {
+    background: #66c769;
+}
+
+.bc-white {
+    background: #fff;
+}
+
+.bc-bg {
+    background: #EEEEEE;
+}
+
+.bdc1 {
+    border-color: #e5e5e5;
+}
+
+.bdc2 {
+    border-color: #eaeaea;
+}
+
+
+/* ui-box */
+
+.f-box {
+    display: flex;
+    /*左右*/
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.f-box-dc {
+    /*上下*/
+    flex-direction: column;
+}
+
+.f-box-drr {
+    flex-direction: row-reverse;
+}
+
+.f-box-dcr {
+    flex-direction: column-reverse;
+}
+
+.f-box-jc {
+    justify-content: center;
+}
+
+.f-box-js {
+    justify-content: flex-start;
+}
+
+.f-box-je {
+    justify-content: flex-end;
+}
+
+.f-box-ja {
+    justify-content: space-around;
+}
+
+.f-box-as {
+    align-items: flex-start;
+}
+
+.f-box-ae {
+    align-items: flex-end;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+
+/* ui-font */
+
+html {
+    font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.ft16 {
+    font-size: 1rem;
+}
+
+.ft14 {
+    font-size: .875rem;
+}
+
+.ft12 {
+    font-size: .75rem;
+}
+
+.tx-c {
+    text-align: center;
+}
+
+.tx-l {
+    text-align: left;
+}
+
+.tx-r {
+    text-align: right;
+}
+
+.tx-oe {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap !important;
+}
+
+.tx-wb {
+    word-break: break-all;
+}
+
+
+/*ui-block*/
+
+.block-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

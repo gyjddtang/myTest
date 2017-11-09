@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>页面跳转并自动关闭（2）</title>
+</head>
+
+<body>
+    <h3></h3>
+    <a href="javascript:stop()">留在此页</a>
+
+
+    <script>
+        var seconds = 5,
+            timer = null;
+
+        function calc() {
+            if (seconds > 0) {
+                document.querySelector("h3").innerHTML = seconds + "秒后自动关闭！";
+                seconds--;
+            } else {
+                window.close();
+                clearInterval(timer);
+                timer = null;
+            }
+        }
+        window.onload = function () {
+            calc();
+            timer = setInterval(calc, 1000);
+        }
+
+        function stop() {
+            clearInterval(timer);
+            timer = null;
+        }
+    </script>
+</body>
+
+</html>

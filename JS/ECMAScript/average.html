@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>求平均分（录入“-1”结束）</title>
+</head>
+
+<body>
+    <script>
+        var count = 0;
+        var sum = 0;
+        do {
+            var score = parseFloat(prompt("请录入分数："));
+            if (score != -1) {
+                sum += score;
+                count++;
+            }
+        } while (score != -1);
+        if (count != 0) {
+            alert("平均分= " + (sum / count).toFixed(2));
+        }
+    </script>
+</body>
+
+</html>

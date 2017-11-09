@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>v-if vs v-show</title>
+</head>
+
+<body>
+    <div id="example1">
+        <template v-if="show">
+            <h1>Title1</h1>
+        </template>
+        <template v-if="hide">
+            <h1>Title2</h1>
+        </template>
+    </div>
+    <div id="example2">
+        <div v-show="hide">
+            <h1>Title3</h1>
+        </div>
+        <div v-show="show">
+            <h1>Title4</h1>
+        </div>
+        <button @click="toggle">点我</button>
+    </div>
+
+
+    <script src="js/vue.js"></script>
+    <script>
+        // v-if 如果在初始渲染时条件为假，则什么也不做——在条件第一次变为真时才开始局部编译
+        var vm1 = new Vue({
+            el: "#example1",
+            data: {
+                show: true,
+                hide: false
+            }
+        })
+
+
+        // v-show 元素始终被编译并保留，只是简单地基于 CSS 切换
+        var vm2 = new Vue({
+            el: "#example2",
+            data: {
+                show: true,
+                hide: false
+            },
+            methods: {
+                toggle: function () {
+                    if (this.show) {
+                        this.show = false;
+                        this.hide = true;
+                    } else {
+                        this.show = true;
+                        this.hide = false;
+                    }
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

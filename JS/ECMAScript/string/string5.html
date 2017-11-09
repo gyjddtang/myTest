@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>输入一句英文，把首字母变大写</title>
+</head>
+
+<body>
+    <script>
+        var str = prompt("请输入一句英文：");
+        //        var words = str.split(" ");
+        var words = str.split(/\s+/);
+        for (var i = 0; i < words.length; i++) {
+            words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+        }
+        str = words.join(" ");
+        alert(str);
+    </script>
+</body>
+
+</html>

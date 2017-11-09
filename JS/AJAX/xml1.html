@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>javascript和XML DOM解析xml</title>
+</head>
+
+<body>
+    <h1></h1>
+
+
+    <script src="../js/common.js"></script>
+    <script>
+        var xml = "<books><book><name>《xml入门》</name></book></books>";
+        var xmlDoc = getXmlDoc(xml);
+        console.log(xmlDoc);
+        var text = xmlDoc.querySelector("name").textContent;
+        document.querySelector("h1").innerHTML = text;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+header {
+    height: 50rem;
+    background: url(../images/header-bg.png) no-repeat;
+    background-size: cover;
+    background-position: center top;
+    padding-top: .625rem;
+    position: relative;
+}
+
+header nav {
+    position: relative;
+}
+
+header nav ul {
+    border-color: rgba(255, 255, 255, .5) !important;
+}
+
+header nav .active-line {
+    position: absolute;
+    left: .9375rem;
+    top: 4.375rem;
+    height: 1px;
+    background: #ff6c6c;
+    transition: all .5s;
+}
+
+header nav ul li a {
+    display: block;
+    width: 90%;
+    line-height: 2.5rem;
+}
+
+header nav ul li.active a,
+header nav ul li a:hover {
+    color: #ff6c6c;
+}
+
+header .content {
+    margin-top: 7rem;
+}
+
+header .content img {
+    width: 70%;
+}
+
+header .content button {
+    margin-top: 3rem;
+    width: 21.25rem;
+    height: 4.625rem;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    transition: all .5s;
+}
+
+header .content button:hover {
+    background: rgba(255, 255, 255, .8);
+    color: #182a44;
+}
+
+.shape-mask {
+    overflow-x: hidden;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.shape-mask div {
+    box-sizing: border-box;
+    width: 100%;
+    border-top: solid transparent 10rem;
+    border-left: solid #fff 50vw;
+    border-right: solid #fff 50vw;
+}
+
+.program-title {
+    padding-top: 6.25rem;
+}
+
+.program-title h3 {
+    font-style: italic;
+}
+
+.program-title h1 {
+    font-size: 6rem;
+}
+
+.program {
+    background: url(../images/program-bg.png) no-repeat;
+    background-size: 100%;
+    background-position: bottom;
+}

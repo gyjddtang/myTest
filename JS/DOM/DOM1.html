@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>遍历元素属性</title>
+</head>
+
+<body>
+    <a id="a1Id" class="a1Class" href="javascript:void(0)">百度搜索</a>
+
+    <script>
+        var aObj = document.getElementById("a1Id");
+        console.log(aObj.attributes);
+        for (var i = 0; i < aObj.attributes.length; i++) {
+            var name = aObj.attributes[i].name;
+            var value = aObj.attributes[i].value;
+            console.log(name + ":" + value);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>利用事件冒泡</title>
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+    <div class="calc-box" onclick="calc(event)">
+        <input type="button" value="1">
+        <input type="button" value="2">
+        <input type="button" value="3">
+        <input type="button" value="4">
+        <br>
+        <br>
+        <input type="button" value="c">
+        <input type="button" value="+">
+        <input type="button" value="-">
+        <input type="button" value="=">
+    </div>
+    <br>
+    <textarea class="textarea"></textarea>
+
+
+    <script>
+        function calc(evt) {
+            var src = evt.target || evt.srcElement;
+            var textar = document.querySelector("textarea");
+            if (src.nodeName == "INPUT") {
+                switch (src.value) {
+                case "c":
+                    textar.value = "";
+                    break;
+                case "=":
+                    var r = null;
+                    try {
+                        r = eval(textar.value);
+                    } catch (err) {
+                        r = err.name;
+                    }
+                    textar.value = r;
+                    break;
+                default:
+                    textar.value += src.value;
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

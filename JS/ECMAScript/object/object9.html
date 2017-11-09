@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数的继承</title>
+</head>
+
+<body>
+    <script>
+        function Student(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        function Teacher(name) {
+            this.name = name;
+            this.test = function () {
+                alert("出题");
+            }
+        }
+        var zhang = new Teacher("张东");
+        //修改所有子类型的原型
+        //Student.prototype = zhang;
+        var hmm = new Student("韩梅梅", 19);
+        //只修改当前子类型对象的__proto__
+        //hmm.__proto__ = zhang;
+        Object.setPrototypeOf(hmm, zhang);
+        hmm.test();
+    </script>
+</body>
+
+</html>

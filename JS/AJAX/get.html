@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax的get请求</title>
+</head>
+
+<body>
+    <h1>Ajax第一个页面</h1>
+    <p>这些是html页面内容</p>
+    <hr>
+    <button class="bt1">Ajax请求</button>
+    <div class="div1"></div>
+
+
+    <script src="../js/common.js"></script>
+    <script>
+        var bt = document.querySelector(".bt1");
+        bt.onclick = function () {
+            var xhr = getXHR();
+            xhr.open("get", "../PHP/server.php", true);
+            xhr.send(null);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        var data = xhr.responseText;
+                        document.querySelector(".div1").innerHTML = data;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

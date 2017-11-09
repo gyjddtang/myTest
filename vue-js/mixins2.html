@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>组件选项为对象的混合</title>
+  <style>
+    h1 {
+      color: #8e0ab9;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo">
+    <h1>{{ msg }}</h1>
+    <h1>{{ mixin }}</h1>
+  </div>
+
+  <script src="js/vue2.3.0.js"></script>
+  <script>
+    let mix = {
+      data: function () {
+        return {
+          mixin: 'Hello Mixins From Mixin'
+        }
+      },
+      mounted: function () {
+        console.log('mounted from mixin')
+        this.hello()
+      },
+      methods: {
+        hello () {
+          console.log('hello from mixins')
+        }
+      }
+    }
+
+    var vm = new Vue({
+      el: '#demo',
+      mixins: [ mix ],
+      data () {
+        return {
+          msg: 'Hello Mixins'
+        }
+      },
+      mounted () {
+        console.log('mounted from component')
+        this.hello()
+      },
+      methods: {
+        hello () {
+          console.log('hello from component')
+        }
+      }
+    })
+
+    // 值为对象的选项，例如 methods, components 和 directives，将被混合为同一个对象。两个对象键名冲突时，取组件对象的键值对。
+  </script>
+</body>
+</html>

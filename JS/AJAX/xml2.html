@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax解析xml</title>
+</head>
+
+<body>
+    <input type="text" name="nickname" placeholder="昵称">
+    <br>
+    <input type="number" name="password" placeholder="密码">
+    <br>
+    <input type="button" value="提交" onclick="mySubmit()">
+    <hr>
+    <h3></h3>
+
+
+    <script src="../js/common.js"></script>
+    <script>
+        var nam = document.querySelector("input[type='text']").value;
+        var psd = document.querySelector("input[type='number']").value;
+        var xmlString = "<?xml version='1.0' encoding='utf-8' ?>";
+        xmlString += "<user>";
+        xmlString += "<nickName>" + nam + "</nickName>";
+        xmlString += "<password>" + psd + "</password>";
+        xmlString += "</user>";
+
+        function mySubmit() {
+            var xhr = getXHR();
+            xhr.open("post", "../PHP/server3.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send("xmlString=" + xmlString);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var data = xhr.responseXML;
+                    var text = data.querySelector("name").textContent;
+                    document.querySelector("h3").innerHTML = text;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>查找字符串所有关键字内容及位置</title>
+</head>
+
+<body>
+    <script>
+        var str = "地铁里听到一个女孩大概是给男朋友打电话，“我已经到西直门了，你快出来往地铁站走。如果你到了，我还没到，你就等着吧。如果我到了，你还没到，你就等着吧。";
+        var regExp = /我|到了/g;
+        var arr = [];
+        while ((arr = regExp.exec(str)) != null) {
+            document.write("在位置" + arr.index + "发现：" + arr[0] + "<br>");
+        }
+    </script>
+</body>
+
+</html>

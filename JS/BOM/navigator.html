@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>navigator</title>
+</head>
+
+<body>
+    <script>
+        //判断cookie是否禁用
+        if (navigator.cookieEnaled) {
+            alert("已启用cookie，请妥善保管个人信息！");
+        } else {
+            alert("已禁用cookie，保存密码功能可能无法正常使用！");
+        }
+
+        //判断浏览器类型
+        var str = navigator.userAgent,
+            browser = "";
+        if (str.indexOf("MSIE") != -1) {
+            browser = "IE";
+        } else if (str.indexOf("Trident") != -1) {
+            browser = "IE 11";
+        } else if (str.indexOf("Firefox") != -1) {
+            browser = "Firefox";
+        } else if (str.indexOf("OPR") != -1) {
+            browser = "Opera";
+        } else if (str.indexOf("Chrome") != -1) {
+            browser = "Chrome";
+        } else if (str.indexOf("Safari") != -1) {
+            browser = "Safari";
+        } else {
+            browser = "未知浏览器！";
+        }
+        document.write(str);
+        document.write("浏览器：" + browser);
+
+        //获取浏览器版本号
+        if (browser != "未知浏览器！") {
+            if (browser == "IE 11") {
+                document.write("<br>版本号：11");
+            } else if (browser == "Opera") {
+                var index = str.indexOf("OPR");
+                index = index + 3 + 1;
+                var n = parseFloat(str.substring(index, index + 3));
+                document.write("<br>版本号：" + n);
+
+            } else {
+                var index = str.indexOf(browser);
+                index = index + browser.length + 1;
+                var n = parseFloat(str.substring(index, index + 3));
+                document.write("<br>版本号：" + n);
+            }
+        }
+    </script>
+</body>
+
+</html>

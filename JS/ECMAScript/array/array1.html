@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数组（录入“exit”结束）</title>
+</head>
+
+<body>
+    <script>
+        //        var nameArr = [];
+        //        while (input != "exit") {
+        //            var input = prompt("请录入姓名：");
+        //            if (input != "exit") {
+        //                nameArr[nameArr.length] = input;
+        //            }
+        //        }
+        //        document.write(nameArr);
+
+
+        var input;
+        var nameArr = [];
+        while ((input = prompt("请录入姓名：")) != "exit") {
+            nameArr[nameArr.length] = input;
+        }
+        document.write(nameArr);
+    </script>
+</body>
+
+</html>

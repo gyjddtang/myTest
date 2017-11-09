@@ -1,0 +1,45 @@
+.couponBox {
+  width: 600px;
+  height: 200px;
+  margin: 60px auto;
+  padding: 0 10px;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle, transparent 6px, #F39B00 6px);
+  background-size: 20px 20px;
+  background-position: 10px 0px;
+}
+
+.couponBox .coupon {
+  background: #F39B00;
+  height: 100%;
+}
+
+.couponBox .l {
+  height: 100%;
+  margin-left: 40px;
+  border-right: 2px dashed rgba(255, 255, 255, .5);
+}
+
+.couponBox .r {
+  width: 200px;
+}
+
+.couponBox .l .money {
+  margin: 20px 0;
+}
+
+.couponBox .l .money h1 {
+  line-height: 3.2rem;
+}
+
+.couponBox .bg {
+  width: 600px;
+  height: 260px;
+  background: rgba(255, 255, 255, .15);
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  position: absolute;
+  left: 25%;
+  top: 45px;
+}

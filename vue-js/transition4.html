@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>transition 同时生效的进入和离开的过渡</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .showBox {
+      position: relative;
+      margin: 50px 200px;
+    }
+
+    .box1,
+    .box2 {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .box1 {
+      background: rgba(159, 204, 85, 0.76);
+    }
+
+    .box2 {
+      background: rgba(97, 131, 171, 0.76);
+    }
+
+    .box-enter,
+    .box-leave-to {
+      opacity: 0;  
+    }
+
+    .box-enter {
+      transform: translateX(200px);
+    }
+
+    .box-leave-to {
+      transform: translateX(-200px);
+    }
+
+    .box-enter-active,
+    .box-leave-active {
+      transition: all .5s;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo">
+    <button @click="toggle">toggle</button>
+    <div class="showBox">
+      <transition name="box">
+        <div v-if="show1" class="box1" key="box1">内容一</div>
+        <div v-else class="box2" key="box2">内容二</div>
+      </transition>
+    </div>
+  </div>
+
+  <script src="./js/vue2.3.0.js"></script>
+  <script>
+    var vm = new Vue({
+      el: "#demo",
+      data: {
+        show1: true
+      },
+      methods: {
+        toggle () {
+          this.show1 = !this.show1
+        }
+      }
+    })
+  </script>
+</body>
+</html>

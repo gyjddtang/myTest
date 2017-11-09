@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>冒泡升序方法</title>
+</head>
+
+<body>
+    <script>
+        function bubbleSort(arr) {
+            for (var n = 1; n <= arr.length - 1; n++) {
+                for (var i = 0; i < arr.length - n; i++) {
+                    if (arr[i] > arr[i + 1]) {
+                        var box = arr[i];
+                        arr[i] = arr[i + 1];
+                        arr[i + 1] = box;
+                    }
+                }
+            }
+        }
+
+        var arr1 = [9, 5, 17, 23, 8, 1, 6, 29, 12];
+        document.write(arr1 + "<br>");
+        bubbleSort(arr1);
+        document.write(arr1);
+    </script>
+</body>
+
+</html>

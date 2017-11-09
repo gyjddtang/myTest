@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式验证邮箱</title>
+</head>
+
+<body>
+    <script>
+        var input = "";
+        var regExp = /^\w+@\w+([-]\w+)*(\.\w+)+$/;
+        while (regExp.test(input) != true) {
+            input = prompt("请输入邮箱：");
+            alert(regExp.test(input) == true ? "注册成功！" : "邮箱格式不正确！");
+        }
+    </script>
+</body>
+
+</html>

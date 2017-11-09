@@ -1,0 +1,69 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: rgb(245, 245, 245);
+}
+
+.state-container {
+  width: 100%;
+  padding: 50px 0;
+  background: #fff;
+}
+
+.state-box {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.state {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.state .line {
+  flex: 1;
+  height: 6px;
+  border-top: 4px solid #ddd;
+  border-bottom: 4px solid #ddd;
+  z-index: 1;
+  margin-left: -7px;
+  margin-right: -7px;
+  background: #c8c8c8;
+}
+
+.state .round {
+  width: 40px;
+  background: #c8c8c8;
+  border-radius: 50%;
+  border: 7px solid #ddd;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  font-size: 20px;
+}
+
+.state .text {
+  font-size: 16px;
+  color: #c8c8c8;
+  margin-top: 20px;
+}
+
+.line > div {
+  height: 6px;
+  width: 0;
+  background: rgb(65, 88, 148);
+}
+
+@keyframes animate1 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}

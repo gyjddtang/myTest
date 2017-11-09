@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>双向绑定</title>
+</head>
+
+<body>
+    <div id="div1">
+        <p>{{ text }}</p>
+        <input type="text" v-model="text">
+        <p>{{ num }}</p>
+        <input type="number" v-model.lazy="num">
+    </div>
+
+
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#div1",
+            data: {
+                text: "Hello Vue js!",
+                num: 0
+            }
+        })
+    </script>
+</body>
+
+</html>

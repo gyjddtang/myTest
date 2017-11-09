@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>generator2</title>
+</head>
+<body>
+  <script>
+    function *secondGene(x) {
+      let y = yield x * 2;
+      return y;
+    }
+
+    let fun = secondGene(3);
+    console.log(fun.next());
+    //注意此next()的value为undefined
+    console.log(fun.next());
+
+    let fun1 = secondGene(2);
+    console.log(fun1.next());
+    //next(3)参数可以传入 Generator 函数，作为上个阶段异步任务的返回结果，被函数体内的变量y接收
+    console.log(fun1.next(3));
+  </script>
+</body>
+</html>

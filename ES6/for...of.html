@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>for...of</title>
+</head>
+<body>
+
+  <script>
+    let obj = {name: 'Jim', age: '19', sex: 'man'};
+    for(let key in obj) {
+      console.log(obj[key]);
+    }
+
+     let arr = ['a', 'b', 'c', 'd'];
+     for(let i of arr) {
+       console.log(i);
+     }
+
+     for(let [index, ele] of arr.entries()) {
+       console.log(index + ele);
+     }
+
+     arr.map((ele, index) => {
+       console.log(index + ele);
+     });
+
+     arr.forEach((ele, index) => {
+       console.log(index + ele);
+     });
+  </script>
+</body>
+</html>

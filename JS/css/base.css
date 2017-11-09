@@ -1,0 +1,102 @@
+/*重置*/
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+img,
+input {
+    vertical-align: middle;
+}
+
+a {
+    text-decoration: none;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+html {
+    font-family: "微软雅黑", Helvetica, STHeiTi, Arial, sans-serif;
+    /*    font-size: 16px;*/
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: #fff;
+    color: #000;
+}
+
+
+/*重置  结束*/
+
+
+/*弹性盒子（新）*/
+
+.f-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.f-box-dc {
+    flex-direction: column;
+}
+
+.f-box-dr {
+    flex-direction: row-reverse;
+}
+
+.f-box-jc {
+    justify-content: center;
+}
+
+.f-box-js {
+    justify-content: flex-start;
+}
+
+.f-box-je {
+    justify-content: flex-end;
+}
+
+.f-box-as {
+    align-items: flex-start;
+}
+
+.f-box-jsa {
+    justify-content: space-around;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+
+/*弹性盒子（新）  结束*/

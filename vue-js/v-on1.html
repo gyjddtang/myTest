@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>方法</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ text1 }}</p>
+        <button v-on:click="reverseTxt">颠倒位置</button>
+    </div>
+
+
+    <script src="js/vue2.3.0.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                text1: "这是一段文字啊！"
+            },
+            methods: {
+                reverseTxt: function () {
+                    this.text1 = this.text1.split("").reverse().join("");
+                }
+            },
+            mounted: function () {
+              var kk = 'test'   // ES6语法会报错
+              alert(kk)
+            }
+        })
+    </script>
+</body>
+
+</html>

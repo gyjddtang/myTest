@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>自定义对象遍历（枚举）</title>
+</head>
+
+<body>
+    <script>
+        var fbb = {
+            姓名: "范冰冰",
+            身高: 179,
+            体重: 65
+        };
+
+        function getAttributes(obj) {
+            for (var key in obj) {
+                document.write(key + ":" + obj[key] + "<br>");
+            }
+        }
+        getAttributes(fbb);
+    </script>
+</body>
+
+</html>

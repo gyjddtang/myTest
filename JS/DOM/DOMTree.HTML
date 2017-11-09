@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DOM树</title>
+</head>
+
+<body>
+    <h1 id="h1">我是h1</h1>
+    <h2 id="h2">
+        <span>你好！</span>
+    </h2>
+    <button onclick="myLoad(this)">on load</button>
+
+
+    <script>
+        console.log(document.getElementById("h1").nodeType);
+        console.log(document.getElementById("h1").nodeName);
+
+        console.log(document.getElementById("h2").innerHTML.trim());
+
+        function myLoad(btObj) {
+            btObj.innerHTML = "loading…";
+        }
+    </script>
+</body>
+
+</html>

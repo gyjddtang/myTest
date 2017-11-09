@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>computed</title>
+  <style media="screen">
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo" v-cloak>
+    <h4>{{ firstName }}</h4>
+    <h4>{{ lastName }}</h4>
+    <h4>{{ fullName }}</h4>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    let vm = new Vue({
+      el: '#demo',
+      data: {
+        firstName: 'Gao',
+        lastName: 'YuanJie',
+        // fullName: ''
+      },
+      // watch: {
+      //   firstName: function(val) {
+      //     this.fullName = val + this.lastName;
+      //   },
+      //
+      //   lastName: function(val) {
+      //     this.fullName = this.firstName + val;
+      //   }
+      // },
+
+      // 计算属性只有在它的相关依赖发生改变时才会重新求值
+      computed: {
+        fullName: function() {
+          return this.firstName + this.lastName
+        }
+      }
+    });
+  </script>
+</body>
+</html>

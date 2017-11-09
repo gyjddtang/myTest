@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>tab页效果</title>
+    <link rel="stylesheet" href="../css/common.css">
+
+</head>
+
+<body>
+    <ul class="ul1">
+        <li id="tab1" onmousemove="setTab(1)">Tab1</li>
+        <li id="tab2" onmousemove="setTab(2)">Tab2</li>
+        <li id="tab3" onmousemove="setTab(3)">Tab3</li>
+    </ul>
+    <div class="div1">
+        <div class="on" id="content1">Content1</div>
+        <div id="content2">Content2</div>
+        <div id="content3">Content3</div>
+    </div>
+
+
+    <script>
+        var curr = 1;
+
+        function setTab(n) {
+            if (n != curr) {
+                var currDiv = document.getElementById("content" + curr);
+                currDiv.removeAttribute("class");
+                var nextDiv = document.getElementById("content" + n);
+                nextDiv.className = "on";
+                curr = n;
+            }
+        }
+    </script>
+</body>
+
+</html>

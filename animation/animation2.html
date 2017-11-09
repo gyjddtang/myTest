@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/animation2.css">
+</head>
+<body>
+  <div class="state-container">
+    <!--  根据当前状态添加类名  state1：选择证明   state2：选择支付   state3：一卡通支付   state4：支付成功  -->
+    <div class="state-box">
+      <div class="state">
+        <div class="round round1">✔</div>
+        <div class="line line1"><div></div></div>
+        <div class="round round2">✔</div>
+        <div class="line line2"><div></div></div>
+        <div class="round round3">✔</div>
+        <div class="line line3"><div></div></div>
+        <div class="round round4">✔</div>
+      </div>
+      <div class="state">
+        <p class="text text1">选择证明</p>
+        <p class="text text2">选择份数</p>
+        <p class="text text3">一卡通支付</p>
+        <p class="text text4">支付成功</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/jquery.min.js"></script>
+  <script>
+    $(function() {
+      let sta = 3;
+      let i = 0;
+      let lineW = $('.state .line').width();
+      animation();
+
+      //jQuery
+      function animation() {
+        i++;
+        $(`.state .text${i}`).css('color', '#333');
+        $(`.state .round${i}`).css('background', 'rgb(65, 88, 148)');
+        if(i == sta) return;
+        $(`.line${i} > div`).animate({
+          width: lineW
+        }, 400, function() {
+          animation();
+        });
+      }
+
+      //原生js
+      // function animation() {
+      //   i++;
+      //   $(`.state .text${i}`).css('color', '#333');
+      //   $(`.state .round${i}`).css('background', 'rgb(65, 88, 148)');
+      //   if(i == sta) return;
+      //   $(`.line${i} > div`).css('animation', 'animate1 0.4s linear forwards').get(0).addEventListener("animationend", animation);
+      // }
+
+      // 周期函数
+      // var timer = null;
+      // let i = 0;
+      // setInterval(() => {
+      //   if(i <= 100) {
+      //     $('.line1').css('background', `linear-gradient(to right, rgb(65, 88, 148) ${i}%, #c8c8c8 ${i}%)`);
+      //     i++;
+      //   } else {
+      //     clearInterval(timer);
+      //     timer = null;
+      //   }
+      // }, 4);
+    })
+  </script>
+</body>
+</html>

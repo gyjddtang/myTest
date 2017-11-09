@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <link href="css/common.css" rel="stylesheet"></link>
+</head>
+
+<body>
+    <input id="checkbox1" type="checkbox" value="false">
+    <button id="bt1">按钮</button>
+    <div>
+        <div class="img-png">
+            <img src="images/1.png">
+        </div>
+        <div class="img-svg">
+            <img src="images/2.svg">
+        </div>
+    </div>
+    <svg width="100%" height="100%" version="1.1" xmlns="网址">
+        <circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" fill="red" />
+    </svg>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $("#bt1").click(function () {
+            if ($("#checkbox1").is(":checked")) {
+                $("#checkbox1").val("true");
+            }
+            alert($("#checkbox1").val());
+        });
+    </script>
+</body>
+
+</html>

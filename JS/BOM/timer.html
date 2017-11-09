@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>下班倒计时（周期性倒计时）</title>
+</head>
+
+<body>
+    <h1></h1>
+
+
+    <script>
+        var timer = null;
+
+        function calc() {
+            var now = new Date();
+            var target = new Date();
+            target.setHours("17");
+            target.setMinutes("30");
+            target.setSeconds("00");
+            var ms = target - now;
+            if (ms > 0) {
+                var hours = parseInt(ms / 1000 / 3600);
+                var minutes = parseInt(ms / 1000 / 60 % 60);
+                var seconds = parseInt(ms / 1000 % 60);
+                var h = toTwo(hours);
+                var m = toTwo(minutes);
+                var s = toTwo(seconds);
+                document.querySelector("h1").innerHTML = h + ":" + m + ":" + s;
+            } else {
+                document.querySelector("h1").innerHTML = "时间到！";
+                clearInterval(timer);
+                timer = null;
+            }
+        }
+
+        function toTwo(num) {
+            return num < 10 ? "0" + num : "" + num;
+        }
+        window.onload = function () {
+            calc();
+            timer = setInterval(calc, 1000);
+        }
+    </script>
+</body>
+
+</html>

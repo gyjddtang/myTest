@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>闭包3</title>
+</head>
+
+<body>
+    <script>
+        function clusure() {
+            var arr = [];
+            for (var i = 0; i < 3; i++) {
+                arr[i] = function () {
+                    return i;
+                };
+            }
+            return arr;
+        }
+        var funs = clusure();
+        document.write(funs[0]() + "<br>");
+        document.write(funs[1]() + "<br>");
+        document.write(funs[2]() + "<br>");
+    </script>
+</body>
+
+</html>

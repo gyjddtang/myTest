@@ -1,0 +1,332 @@
+/*重置*/
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+
+/*重置结束*/
+
+
+/*表格*/
+
+table {
+    border-collapse: collapse;
+    width: 400px;
+    margin: 0 auto;
+}
+
+table th,
+table td {
+    border: 1px solid black;
+    height: 35px;
+    text-align: center;
+}
+
+
+/*表格  结束*/
+
+
+/*index*/
+
+.card-header {
+    background: url(../images/bg.jpg) no-repeat;
+    background-size: cover;
+}
+
+
+/*index结束*/
+
+
+/*returnTop*/
+
+.content1 {
+    height: 500px;
+    width: 100%;
+}
+
+.content2 {
+    height: 1000px;
+    width: 100%;
+    background: #2ddcd2;
+}
+
+.return-top-bt {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 20px;
+    bottom: 50px;
+}
+
+
+/*returnTop结束*/
+
+
+/*test1*/
+
+.img-png {
+    width: 300px;
+    height: 300px;
+}
+
+.img-png img {
+    width: 100%;
+}
+
+.img-svg {
+    width: 300px;
+    height: 300px;
+}
+
+.img-svg img {
+    width: 100%;
+    color: orange;
+}
+
+
+/*test1结束*/
+
+
+/*test2*/
+
+.box {
+    background: orange;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    color: #fff;
+    font-size: 30px;
+    flex: 1;
+}
+
+.box:nth-child(even) {
+    background: green;
+}
+
+.wrapper {
+    width: 500px;
+    border: 1px solid orange;
+    padding: 20px;
+    margin: 20px auto;
+    display: flex;
+}
+
+.a {
+    flex: 2;
+}
+
+
+/*test2结束*/
+
+
+/*DOM test1*/
+
+.ul1 {
+    display: flex;
+    line-height: 30px;
+    text-align: center;
+    width: 500px;
+}
+
+.ul1 li {
+    list-style: none;
+    flex: 1;
+    cursor: pointer;
+}
+
+.ul1 li:first-child {
+    background: lightgreen;
+}
+
+.ul1 li:nth-child(2) {
+    background: lightyellow;
+}
+
+.ul1 li:last-child {
+    background: lightblue;
+}
+
+.div1 div {
+    line-height: 200px;
+    width: 500px;
+    display: none;
+    text-align: center;
+}
+
+.div1 div:first-child {
+    background: lightgreen;
+}
+
+.div1 div:nth-child(2) {
+    background: lightyellow;
+}
+
+.div1 div:last-child {
+    background: lightblue;
+}
+
+.on {
+    display: block !important;
+}
+
+
+/*DOM test1结束*/
+
+
+/*DOM test2*/
+
+.nav1 {
+    width: 300px;
+    line-height: 24px;
+}
+
+.nav1>li {
+    background: lightblue;
+    width: 100px;
+    float: left;
+}
+
+.nav1 ol {
+    display: none;
+}
+
+
+/*DOM test2结束*/
+
+
+/*DOM test3*/
+
+.nav3 h4 {
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+.open {
+    background: url(../images/iconfont-jianhao.png) no-repeat;
+    background-position: left center;
+    background-size: contain;
+}
+
+.close {
+    background: url(../images/iconfont-jiahao.png) no-repeat;
+    background-position: left center;
+    background-size: contain;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+
+/*DOM test3结束*/
+
+
+/*BOM timer-3*/
+
+.ad-box {
+    width: 300px;
+    height: 200px;
+    position: fixed;
+    right: 0;
+    bottom: -200px;
+    background: #e4e4e4;
+}
+
+.ad-box > span {
+    cursor: pointer;
+}
+
+
+/*BOM timer-3  结束*/
+
+
+/*BOM event2*/
+
+.d1 {
+    width: 300px;
+    height: 300px;
+    background: lightblue;
+    cursor: pointer;
+}
+
+.d2 {
+    width: 200px;
+    height: 200px;
+    background: lightgreen;
+    cursor: pointer;
+}
+
+.d3 {
+    width: 100px;
+    height: 100px;
+    background: lightyellow;
+    cursor: pointer;
+}
+
+
+/*BOM event2  结束*/
+
+
+/*BOM event4*/
+
+.calc-box input[type=button] {
+    width: 30px;
+    height: 30px;
+}
+
+.textarea {
+    resize: none;
+    width: 200px;
+    height: 100px;
+}
+
+
+/*BOM event4  结束*/
+
+
+/*BOM event5*/
+
+.div-box {
+    width: 500px;
+    height: 500px;
+    background: lightblue;
+    margin: 0 auto;
+    position: relative;
+}
+
+.div-box p {
+    width: 46px;
+    height: 60px;
+    background: url(../images/navigation.png) no-repeat;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -23px;
+    margin-top: -60px;
+}
+
+
+/*BOM event5  结束*/
+
+
+/*HTML5 CORE form3*/
+
+#rgb-div {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+}
+
+
+/*HTML5 CORE form3  结束*/

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>二级菜单显示隐藏(1)</title>
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+    <ul class="nav1">
+        <li onmouseover="display(this)" onmouseout="display(this)">电影
+            <ol>
+                <li>寻龙诀</li>
+                <li>美人鱼</li>
+                <li>卧虎藏龙</li>
+            </ol>
+        </li>
+        <li onmouseover="display(this)" onmouseout="display(this)">剧集
+            <ol>
+                <li>虎妈猫爸</li>
+                <li>花千骨</li>
+                <li>琅琊榜</li>
+            </ol>
+        </li>
+        <li onmouseover="display(this)" onmouseout="display(this)">综艺
+            <ol>
+                <li>快乐大本营</li>
+                <li>天天向上</li>
+                <li>奔跑吧兄弟</li>
+            </ol>
+        </li>
+    </ul>
+
+
+    <script>
+        function display(liObj) {
+            var olObj = liObj.querySelector("ol");
+            if (olObj.style.display == "block") {
+                olObj.style.display = "none";
+            } else {
+                olObj.style.display = "block";
+            }
+        }
+    </script>
+</body>
+
+</html>

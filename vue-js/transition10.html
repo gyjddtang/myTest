@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>transition 列表过渡</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .list {
+      margin: 100px 50px;
+    }
+    .listItem {
+      list-style: none;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      background: #fff;
+      border: 1px solid rgb(149, 145, 145);
+    }
+    .list-enter,
+    .list-leave-to {
+      /*opacity: 0;*/
+      transform: translateY(-50px);
+    }
+    .list-enter-active,
+    .list-leave-active {
+      transition: all 1s ease-in-out;
+    }
+    .list-leave-active {
+      position: absolute;
+      z-index: -1;
+    }
+    .list-move {
+      transition: transform 1s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+<div id="demo">
+  <transition-group name="list" tag="ul" class="list">
+    <li v-for="(item, index) of list" :key="item" class="listItem">
+      {{ item }}
+    </li>
+  </transition-group>
+  <button @click="add">add</button>
+  <button @click="minus">minus</button>
+</div>
+
+<script src="./js/vue2.3.0.js"></script>
+<script>
+  var vm = new Vue({
+    el: "#demo",
+    data: {
+      list: [1, 2, 3, 4, 5, 6, 7],
+      nextVal: 8
+    },
+    methods: {
+      randomIndex () {
+        return Math.floor(Math.random() * this.list.length)
+      },
+
+      add () {
+        this.list.splice(this.randomIndex(), 0, this.nextVal++)
+      },
+
+      minus () {
+        this.list.splice(this.randomIndex(), 1)
+      }
+    }
+  })
+</script>
+</body>
+</html>

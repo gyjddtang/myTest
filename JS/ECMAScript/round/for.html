@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>找水仙花数（100-999）</title>
+</head>
+
+<body>
+    <script>
+        var x = "";
+        for (var i = 100; i < 1000; i++) {
+            var hd = parseInt(i / 100);
+            var ten = parseInt((i % 100) / 10);
+            var one = i % 10;
+            if (i == hd * hd * hd + ten * ten * ten + one * one * one) {
+                x = x + i + "\n";
+            }
+        }
+        alert(x);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+/*弹性盒子（新）*/
+
+.f-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.f-box-dc {
+    flex-direction: column;
+}
+
+.f-box-dr {
+    flex-direction: row-reverse;
+}
+
+.f-box-jc {
+    justify-content: center;
+}
+
+.f-box-js {
+    justify-content: flex-start;
+}
+
+.f-box-je {
+    justify-content: flex-end;
+}
+
+.f-box-as {
+    align-items: flex-start;
+}
+
+.f-box-jsa {
+    justify-content: space-around;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+
+/*弹性盒子（新）  结束*/
+
+.d1 {
+    width: 300px;
+    height: 300px;
+    background: lightblue;
+    cursor: pointer;
+}
+
+.d2 {
+    width: 200px;
+    height: 200px;
+    background: lightgreen;
+    cursor: pointer;
+}
+
+.d3 {
+    width: 100px;
+    height: 100px;
+    background: lightyellow;
+    cursor: pointer;
+}

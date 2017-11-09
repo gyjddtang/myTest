@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>取消事件</title>
+</head>
+
+<body>
+    <form>
+        姓名：
+        <input type="text" name="name">
+        <br> 密码：
+        <input type="password" name="pwd">
+        <br> 空间：
+        <input type="text" name="space">
+        <br>
+        <input type="submit" value="提交" id="sub-bt">
+    </form>
+
+
+    <script>
+        var subBt = document.querySelector("#sub-bt");
+        var txtPwd = document.querySelector("input[type=password]");
+        var txtName = document.querySelector("input[type=text]:first-child");
+        var txtSpace = document.querySelector("input[type=text]:last-child");
+        subBt.onclick = function () {
+            var evt = window.event || arguments[0];
+            var reg = /^\d{6}$/;
+            if (!reg.test(txtPwd.value)) {
+                if (evt.preventDefault) {
+                    alert("密码格式不正确！");
+                    evt.preventDefault();
+                } else {
+                    evt.returnValue = false;
+                }
+            } else {
+                var nameCd = encodeURIComponent(txtName.value);
+                var spaceCd = encodeURIComponent(txtSpace.value);
+                var params = "?" + txtName.name + "=" + nameCd + "&" + txtPwd.name + "=" + txtPwd.value + "&" + txtSpace.name + "=" + spaceCd;
+                var url = location.href + params;
+                location.reload(url);
+            }
+        }
+    </script>
+</body>
+
+</html>

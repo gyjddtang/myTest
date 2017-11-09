@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>v-for遍历对象</title>
+</head>
+
+<body>
+    <!-- <ul id="example">
+        <li v-for="value in object">
+            {{ $key }}:{{ value }}
+        </li>
+    </ul> -->
+    <ul id="example">
+        <li v-for="(value, key, index) of object">
+            {{ index }}. {{ key }} : {{ value }}
+        </li>
+    </ul>
+
+
+    <script src="./js/vue2.3.0.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#example",
+            data: {
+                object: {
+                    FirstName: "John",
+                    LastName: "Doe",
+                    Age: 30
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

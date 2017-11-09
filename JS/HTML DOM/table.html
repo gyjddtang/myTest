@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML DOM中的table对象</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <script>
+        var data = [
+            {
+                "id": 101,
+                "name": "可口可乐",
+                "price": 3.5,
+                "count": 30
+            },
+            {
+                "id": 102,
+                "name": "百事可乐",
+                "price": 3.0,
+                "count": 50
+            },
+            {
+                "id": 103,
+                "name": "非常可乐",
+                "price": 2.5,
+                "count": 10
+            }
+        ];
+    </script>
+</head>
+
+<body>
+    <table id='table1'></table>
+
+    <script>
+        var table = null;
+
+        function createTable() {
+            // table = document.createElement("table");
+            table = document.getElementById('table1');
+            var tr = table.insertRow();
+            for (var key in data[0]) {
+                var td = tr.insertCell();
+                td.innerHTML = key;
+            }
+            var operate = tr.insertCell();
+            operate.innerHTML = "操作";
+        }
+
+        function initdata() {
+            for (var i = 0; i < data.length; i++) {
+                var tr = table.insertRow();
+                for (var key in data[i]) {
+                    var td = tr.insertCell();
+                    td.innerHTML = data[i][key];
+                }
+                var td = tr.insertCell();
+                var btn = document.createElement("button");
+                btn.innerHTML = "删除";
+                btn.onclick = del;
+                td.appendChild(btn);
+            }
+        }
+
+        function del() {
+            var tr = this.parentNode.parentNode;
+            var name = tr.cells[1].innerHTML;
+            if (confirm("是否删除 \"" + name + "\" ?")) {
+                table.deleteRow(tr.rowIndex);
+            }
+        }
+        window.onload = function () {
+            createTable();
+            initdata();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>v-for值域</title>
+</head>
+
+<body>
+    <ul id="example">
+        <li v-for="n in 10">你好啊！ {{ n }}</li>
+    </ul>
+
+
+    <script src="js/vue.js"></script>
+    <script>
+        //v-for也可以接收一个整数，此时它将重复模板数次
+        var vm = new Vue({
+            el: "#example"
+        })
+    </script>
+</body>
+
+</html>

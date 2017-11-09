@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数的prototype原型</title>
+</head>
+
+<body>
+    <script>
+        function Student(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        hmm = new Student("hanmeimei", 18);
+        lilei = new Student("lilei", 19);
+        Student.prototype.count = 10;
+        Student.prototype.count--;
+        document.write(hmm.count + "<br>");
+        Student.prototype.count--;
+        document.write(lilei.count);
+    </script>
+</body>
+
+</html>

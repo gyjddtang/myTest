@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>同名钩子函数的混合</title>
+  <style>
+    h1 {
+      color: #f0ad4e;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo"></div>
+
+  <script src="js/vue2.3.0.js"></script>
+  <script>
+    var myMixin = {
+      template: '<h1>Hello Mixins</h1>',
+      mounted: function () {
+        console.log('mounted from mixins')
+        this.hello()
+      },
+      methods: {
+        hello: function () {
+          console.log('hello from mixin')
+        }
+      }
+    }
+
+    // Vue.extend()用以创建没有挂载的的子类,可以使用该子类创建多个实例
+    var Component = Vue.extend({
+      mixins: [myMixin],
+      mounted: function () {
+        console.log('mounted from component')
+      }
+    })
+
+    // 创建 newCom 实例，并挂载到一个元素上。
+    var newCom = new Component().$mount('#demo')
+
+    // 同名钩子函数将混合为一个数组，因此都将被调用。 混合对象的 钩子将在组件自身钩子 之前 调用
+  </script>
+</body>
+</html>

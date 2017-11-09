@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>transition javascript钩子</title>
+  <style>
+    @keyframes animate {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .h2 {
+      width: 200px;
+      height: 200px;
+      background: lightBlue;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo">
+    <button @click="toggle">toggle</button>
+    <transition
+      :css="false"
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+      @enter-cancelled="enterCancelled"
+      @before-leave="beforeLeave"
+      @leave="leave"
+      @after-leave="afterLeave"
+      @leave-cancelled="leaveCancelled"
+    >
+      <h2 class="h2" v-if="visible">测试专用测试专用</h2>
+    </transition>
+  </div>
+
+  <script src="./js/vue2.3.0.js"></script>
+  <script>
+    var vm = new Vue({
+      el: "#demo",
+      data: {
+        visible: false
+      },
+      methods: {
+        toggle () {
+          this.visible = !this.visible
+        },
+
+        beforeEnter (ele) {
+          console.log(1111, ele)
+        },
+
+        enter (ele, done) {
+          console.log(2222, ele)
+          ele.style.animation = 'animate 2s'
+          done()
+        },
+
+        afterEnter (ele) {
+          console.log(3333, ele)
+        },
+
+        enterCancelled (ele) {
+          console.log(4444, ele)
+        },
+
+        beforeLeave (ele) {
+          console.log(5555, ele)
+        },
+
+        leave (ele, done) {
+          console.log(6666, ele)
+          done()
+        },
+
+        afterLeave (ele) {
+          console.log(7777, ele)
+        },
+
+        leaveCancelled (ele) {
+          console.log(8888, ele)
+        }
+      }
+    })
+  </script>
+</body>
+</html>

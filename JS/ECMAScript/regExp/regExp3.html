@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>找到超链接a，并获取href值</title>
+</head>
+
+<body>
+
+    <script>
+        var txt = '<h1>我是h1</h1>' + '<a class = "a1" href="productList.html">我是a1</a>' + '<a href="productInfo.html"></a>';
+        var regExp = /<a(.+?)href\s*=\s*['"](.*?)['"](.*?)>(.*?)<\/a>/ig;
+        var arr = [];
+        while ((arr = regExp.exec(txt)) != null) {
+            console.log(arr[0]);
+            console.log(RegExp.$2);
+        }
+    </script>
+</body>
+
+</html>

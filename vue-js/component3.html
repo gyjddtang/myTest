@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>$emit</title>
+</head>
+<body>
+  <div id="demo">
+    <h4>{{ total }}</h4>
+    <child @increment='addTotal'></child>
+    <child @increment='addTotal'></child>
+  </div>
+
+  <script src='./js/vue2.3.0.js'></script>
+  <script>
+    // 定义子组件
+    Vue.component('child', {
+      data: function() {
+        return {
+          count: 0
+        };
+      },
+      methods: {
+        addChildCount: function() {
+          this.count++;
+          this.$emit('increment');
+        }
+      },
+      template: "<button @click='addChildCount'>{{ count }}</button>"
+    });
+
+    let vm = new Vue({
+      el: '#demo',
+      data: {
+        total: 0
+      },
+      methods: {
+        addTotal: function() {
+          this.total++;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

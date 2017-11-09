@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JSON省市二级联动</title>
+</head>
+
+<body>
+    <select id="province">
+        <option>--请选择--</option>
+    </select>
+    <select id="cities" style="display:none"></select>
+
+
+    <script src="../js/common.js"></script>
+    <script>
+        var provinceSle = document.querySelector("#province");
+        var dataObj;
+        var xhr = getXHR();
+        xhr.open("get", "../PHP/server4.php");
+        xhr.send(null);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var data = xhr.responseText;
+                dataObj = eval("(" + data + ")");
+                for (var key in dataObj) {
+                    provinceSle.add(new Option(key));
+                }
+            }
+        }
+
+        provinceSle.onchange = function () {
+            var citySle = document.querySelector("#cities");
+            var indexValue = provinceSle.value;
+            var cities = dataObj[indexValue];
+            citySle.innerHTML = "";
+            if (indexValue != "--请选择--") {
+                citySle.style.display = "";
+                for (var i = 0; i < cities.length; i++) {
+                    citySle.add(new Option(cities[i]));
+                }
+            } else {
+                citySle.style.display = "none";
+            }
+
+        }
+    </script>
+</body>
+
+</html>

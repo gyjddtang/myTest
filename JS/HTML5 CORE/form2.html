@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5表单元素</title>
+</head>
+
+<body>
+    <form name="form1">
+        范围类型：
+        <input type="range" min="0" max="100" name="txtRange" value="0" step="10" onchange="change_val()">
+        <span class="val-show">0</span>
+        <br> 颜色类型：
+        <input type="color">
+        <br>
+        <input type="submit" value="提交">
+    </form>
+
+
+    <script>
+        function change_val() {
+            var value = document.form1.txtRange.value;
+            document.querySelector(".val-show").innerHTML = value;
+        }
+    </script>
+</body>
+
+</html>

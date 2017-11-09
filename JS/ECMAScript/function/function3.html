@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js实现isEmpty方法</title>
+</head>
+
+<body>
+    <script>
+        function isEmpty(str) {
+            if (str === undefined) {
+                return true;
+            } else if (str == null) {
+                return true;
+            } else {
+                var reg = /^\s*$/;
+                return reg.test(str);
+            }
+        }
+        while (true) {
+            var input = prompt("输入");
+            if (isEmpty(input)) {
+                alert("输入不能为空！");
+            } else {
+                document.write(input);
+                break;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>若隐若现</title>
+</head>
+<body>
+    <img src="images/1.png" style="width:500px;height:500px" id='img'>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(function(){
+            toHide();
+        });
+
+        function toHide() {
+            $('#img').fadeTo(3000, .1, toShow);
+        }
+
+        function toShow() {
+            $('#img').fadeTo(3000, 1, toHide);
+        }
+    </script>
+</body>
+</html>

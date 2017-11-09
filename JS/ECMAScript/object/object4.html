@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>自定义对象的方法</title>
+</head>
+
+<body>
+    <button onclick="hmm.intro()">点我</button>
+    <script>
+        var hmm = {
+            name: "韩梅梅",
+            age: 18,
+            intro: function () {
+                alert("My name is " + this.name + ". " + "I'm " + this.age + " years old.");
+            }
+        };
+    </script>
+</body>
+
+</html>

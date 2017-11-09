@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Transition css过渡</title>
+  <style>
+    .image {
+      display: block;
+      width: 400px;
+    }
+
+    .fade-enter-active,   /*过渡的状态。在元素整个过渡过程中作用，在元素被插入时生效，在 transition/animation 完成之后移除。*/
+    .fade-leave-active {   /*定义过渡的状态。在元素整个过渡过程中作用，在离开过渡被触发后立即生效，在 transition/animation 完成之后移除。*/
+      transition: opacity .5s;
+    }
+
+    .fade-enter,   /*过渡的开始状态。在元素被插入时生效，在下一个帧移除。*/
+    .fade-leave-to {   /*定义离开过渡的结束状态。在离开过渡被触发一帧后生效（于此同时 v-leave 被删除），在 transition/animation 完成之后移除。*/
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo">
+    <button @click="toggle">toggle</button>
+    <transition name="fade">
+      <img v-if="visible" ref="image" class="image" src="./image/1.jpg" alt="">
+    </transition>
+  </div>
+
+  <script src="js/vue2.3.0.js"></script>
+  <script>
+    var vm = new Vue({
+      el: '#demo',
+      data: {
+        visible: false
+      },
+      methods: {
+        toggle () {
+          this.visible = !this.visible
+        }
+      }
+    })
+  </script>
+</body>
+</html>

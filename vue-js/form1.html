@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>基础用法</title>
+</head>
+
+<body>
+    <div id="example1">
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">我已阅读并同意协议！</label>
+        <p>是否同意：{{ checked }}</p>
+    </div>
+    <div id="example2">
+        <input type="checkbox" id="Apple" v-model="checkedNames" value="Apple">
+        <label for="Apple">Apple</label>
+        <input type="checkbox" id="Banana" v-model="checkedNames" value="Banana">
+        <label for="Banana">Banana</label>
+        <input type="checkbox" id="Orange" v-model="checkedNames" value="Orange">
+        <label for="Orange">Orange</label>
+        <div>Checked names: {{ checkedNames | json }}</div>
+    </div>
+    <div id="example3">
+        <input id="men" type="radio" value="男" v-model="sex">
+        <label for="men">男</label>
+        <input id="women" type="radio" value="女" v-model="sex">
+        <label for="women">女</label>
+        <div>性别：{{ sex }}</div>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        var vm1 = new Vue({
+            el: "#example1",
+            data: {
+                checked: false
+            }
+        })
+
+        var vm2=new Vue({
+            el:"#example2",
+            data:{
+                checkedNames:[]
+            }
+        })
+        var vm3=new Vue({
+            el:"#example3",
+            data:{
+                sex:"男"
+            }
+        })
+    </script>
+</body>
+
+</html>

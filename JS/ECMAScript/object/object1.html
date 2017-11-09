@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>创建自定义对象</title>
+</head>
+
+<body>
+    <script>
+        //对象直接量
+        var obj = {
+            姓名: "李二狗",
+            身高: 179,
+            体重: 65
+        };
+        document.write(obj.姓名 + "<br>" + obj.身高);
+
+
+        //使用父类型 object 创建对象(了解)
+        var obj = new Object();
+        obj.姓名 = "张麻子";
+        obj.身高 = 150;
+        document.write("<br>" + obj.姓名 + "<br>" + obj.身高);
+    </script>
+</body>
+
+</html>

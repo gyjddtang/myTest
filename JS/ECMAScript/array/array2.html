@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>关联数组的for-in遍历</title>
+</head>
+
+<body>
+    <script>
+//        var arr = [];
+//        arr["姓名"] = "李佳佳";
+//        arr["身高"] = "168cm";
+//        arr["体重"] = "50kg";
+        var arr={"姓名":"李佳佳","身高":"168cm","体重":"50kg"};
+        for (var key in arr) {
+            document.write(key + ":" + arr[key] + "<br>");
+        }
+    </script>
+
+</body>
+
+</html>

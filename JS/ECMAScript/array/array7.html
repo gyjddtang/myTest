@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>十进制转换为二进制</title>
+</head>
+
+<body>
+    <script>
+        var sum = 258;
+        var binary = [];
+        while (sum != 0) {
+            binary.push(sum % 2);
+            sum = parseInt(sum / 2);
+        }
+        binary.reverse();
+        document.write(binary.join(""));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//ES5
+		// function person(age) {
+		// 	this.age = age;
+
+		// 	var me = this;
+		// 	setTimeout(function() {
+		// 		me.age++;
+		// 	}, 1000);
+		// }
+
+		function person(age) {
+			this.age = age;
+
+			setTimeout(() => {
+				this.age++;   //this正确地指向了 person 对象
+			}, 1000);
+		}
+
+		var li = new person(20);
+
+		setTimeout(function() {
+			console.log(li.age);
+		}, 2000);
+	</script>
+</body>
+</html>

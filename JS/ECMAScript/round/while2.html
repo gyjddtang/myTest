@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>找到2000年后的5个闰年</title>
+</head>
+
+<body>
+    <script>
+        var count = 0;
+        var year = 2001;
+        while (count < 5) {
+            if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+                document.write(year + "<br>");
+                count++;
+            }
+            year++;
+        }
+    </script>
+</body>
+
+</html>

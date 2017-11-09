@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var n = parseInt(Math.random() * (10 - 0 + 1) + 0);
+        do {
+            var input = prompt("请猜一个数字：");
+            if (input != "exit" && input != "") {
+                input = parseInt(input);
+                if (input > n) {
+                    alert("猜大了");
+                } else if (input < n) {
+                    alert("猜小了");
+                } else {
+                    alert("猜对了");
+                }
+            }
+        } while (input != n && input != "exit");
+    </script>
+</body>
+
+</html>

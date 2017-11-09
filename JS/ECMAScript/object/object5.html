@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>对象应用实例</title>
+</head>
+
+<body>
+    <button onclick="alert(calc.add())">加法</button>
+    <button onclick="alert(calc.minus())">减法</button>
+
+    <script>
+        var calc = {
+            n: 0,
+            m: 0,
+            add: function () {
+                return this.n + this.m;
+            },
+            minus: function () {
+                return this.n - this.m;
+            }
+        };
+        calc.n = parseFloat(prompt("第一个数："));
+        calc.m = parseFloat(prompt("第二个数："));
+    </script>
+</body>
+
+</html>

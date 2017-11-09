@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <link href="css/common.css" rel="stylesheet"></link>
+</head>
+
+<body>
+    <div class="content1"></div>
+    <div class="content2"></div>
+    <button class="return-top-bt">返回顶部</button>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(".return-top-bt").hide();
+        $(document).scroll(function () {
+            var toppos = $(document).scrollTop();
+            if (toppos > 0) {
+                $(".return-top-bt").show();
+            } else if (toppos == 0) {
+                $(".return-top-bt").hide();
+            }
+        });
+        $(".return-top-bt").click(function () {
+            $(document).scrollTop(0);
+        });
+    </script>
+</body>
+
+</html>

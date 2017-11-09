@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>闭包2</title>
+</head>
+
+<body>
+    <script>
+        function counter() {
+            var n = 0;
+
+            function getUnique() {
+                return n++;
+            }
+
+            function rest() {
+                n = 0;
+            }
+            return [getUnique, rest];
+        }
+        var funs = counter();
+        document.write(funs[0]() + "<br>");
+        document.write(funs[0]() + "<br>");
+        document.write(funs[0]() + "<br>");
+        funs[1]();
+        document.write(funs[0]() + "<br>");
+        document.write(funs[0]() + "<br>");
+    </script>
+</body>
+
+</html>

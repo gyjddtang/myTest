@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>闭包4（汇率转化）</title>
+</head>
+
+<body>
+    <script>
+        function change() {
+            var hlD = 5.7,
+                hlE = 10;
+
+            function toD(rmb) {
+                return rmb / hlD;
+            }
+
+            function toE(rmb) {
+                return rmb / hlE;
+            }
+            return [toD, toE];
+        }
+        var funs = change();
+        document.write(funs[0](100) + "<br>");
+        document.write(funs[1](100));
+    </script>
+</body>
+
+</html>

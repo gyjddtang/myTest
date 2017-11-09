@@ -1,0 +1,26 @@
+.background {
+  width: 800px;
+  height: 400px;
+  background: url(../images/fingerprint.png) no-repeat;
+  background-size: contain;
+  position: relative;
+}
+
+.brightLine {
+  width: 160px;
+  height: 5px;
+  background: linear-gradient(to right, transparent 5%, #3fc0ff 40%, #3fc0ff 60%, transparent);
+  position: absolute;
+  left: calc(50% - 80px);
+  top: 158px;
+  animation: animate 2s linear infinite;
+}
+
+@keyframes animate {
+  50% {
+    top: 264px;
+  }
+  100% {
+    top: 160px;
+  }
+}

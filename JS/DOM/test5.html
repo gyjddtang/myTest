@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>动态创建表格（展示数据）</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 400px;
+            margin: 0 auto;
+        }
+        
+        table th,
+        table td {
+            border: 1px solid black;
+            height: 35px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        var data = [
+            {
+                "ename": "Tom",
+                "salary": 3500,
+                "age": 25
+            },
+            {
+                "ename": "John",
+                "salary": 3600,
+                "age": 26
+            },
+            {
+                "ename": "Jim",
+                "salary": 3800,
+                "age": 24
+            }
+        ];
+    </script>
+</head>
+
+<body>
+    <script>
+        //逐个追加
+        /*
+        var table = document.createElement("table");
+        document.body.appendChild(table);
+        var tr = document.createElement("tr");
+        table.appendChild(tr);
+        var firstE = data[0];
+        for (var key in firstE) {
+            var td = document.createElement("td");
+            tr.appendChild(td);
+            td.innerHTML = key;
+        }
+        for (var i = 0; i < data.length; i++) {
+            var tr = document.createElement("tr");
+            table.appendChild(tr);
+            for (var key in data[i]) {
+                var td = document.createElement("td");
+                tr.appendChild(td);
+                td.innerHTML = data[i][key];
+            }
+        }
+        */
+
+
+        //文档片段
+        var frag = document.createDocumentFragment();
+        var table = document.createElement("table");
+        frag.appendChild(table);
+        var tr = document.createElement("tr");
+        table.appendChild(tr);
+        var firstE = data[0];
+        for (var key in firstE) {
+            var td = document.createElement("td");
+            tr.appendChild(td);
+            td.innerHTML = key;
+        }
+        for (var i = 0; i < data.length; i++) {
+            var tr = document.createElement("tr");
+            table.appendChild(tr);
+            for (var key in data[i]) {
+                var td = document.createElement("td");
+                tr.appendChild(td);
+                td.innerHTML = data[i][key];
+            }
+        }
+        document.body.appendChild(frag);
+    </script>
+</body>
+
+</html>

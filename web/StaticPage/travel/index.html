@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>index</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <header class="space-w">
+        <div>
+            <nav class="container row mt40 ft16 tx-c">
+                <ul class="col-md-5 row bdb mt30">
+                    <li class="col-md-4 active">
+                        <a href="javascript:;" class="tx-white block-c">HOME</a>
+                    </li>
+                    <li class="col-md-4">
+                        <a href="javascript:;" class="tx-white block-c">DESTINATIONS</a>
+                    </li>
+                    <li class="col-md-4">
+                        <a href="javascript:;" class="tx-white block-c">GALLERY</a>
+                    </li>
+                </ul>
+                <a href="javascript:;" class="logo-box col-md-2">
+                    <img src="images/logo.png" alt="logo" class="img-responsive">
+                    <h3 class="tx-white ft28 txa-c mt10">Mountain</h3>
+                </a>
+                <ul class="col-md-5 row bdb mt30">
+                    <li class="col-md-4">
+                        <a href="javascript:;" class="tx-white block-c">REVIEW</a>
+                    </li>
+                    <li class="col-md-4">
+                        <a href="javascript:;" class="tx-white block-c">EXPLORE</a>
+                    </li>
+                    <li class="col-md-4">
+                        <a href="javascript:;" class="tx-white block-c">CONTACT</a>
+                    </li>
+                </ul>
+                <div class="active-line"></div>
+            </nav>
+            <div class="container content">
+                <img src="images/img.png" alt="picture" class="block-c">
+                <button class="block-c tx-white ft20">START BOOKING</button>
+            </div>
+        </div>
+        <div class="shape-mask space-w">
+            <div class="block-c"></div>
+        </div>
+    </header>
+    <section class="program">
+        <div class="container">
+            <div class="program-title tx-c">
+                <h3 class="ft28 tx1">What should I be prepared for ?</h3>
+                <h1 class="theme-tx">PROGRAM</h1>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        $(function() {
+            $(".active-line").width($("header nav li").width());
+            $("header nav ul li").mouseover(function(e) {
+                var target = $(e.currentTarget);
+                var x = target.offset().left;
+                var y = target.parents("nav").offset().left;
+                var left = x - y + 15;
+                $(".active-line").css("left", left);
+            }).mouseout(function() {
+                $(".active-line").css("left", 15);
+            });
+        });
+    </script>
+</body>
+
+</html>

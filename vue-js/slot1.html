@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>单个slot</title>
+</head>
+<body>
+  <div id="demo">
+    <h1>{{ title }}</h1>
+    <child>
+      <!-- 有无分发的内容 -->
+      <p>页面内容</p>
+      <p>页面内容</p>
+    </child>
+  </div>
+
+  <script src='./js/vue2.3.0.js'></script>
+  <script>
+    Vue.component('child', {
+      template: '<div><h2>我是子组件的标题</h2><slot>只有在没有要分发的内容时才会显示。</slot></div>'
+    });
+
+    let vm = new Vue({
+      el: '#demo',
+      data: {
+        title: '页面大标题'
+      }
+    });
+  </script>
+</body>
+</html>

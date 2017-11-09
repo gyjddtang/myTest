@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="qrcode"></div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/qrcode.js"></script>
+  <script>
+    $(function() {
+      var qrcode = new QRCode(document.getElementById("qrcode"), { width: 200, height: 200 });
+      qrcode.makeCode('我的二维码');
+    });
+  </script>
+</body>
+</html>
