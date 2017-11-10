@@ -1,0 +1,34 @@
+/*重置bootstrap*/
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    overflow: hidden;
+}
+
+.container {
+    padding: 0;
+    margin: 0 auto;
+}
+
+.container:before,
+.container:after {
+    display: none;
+}
+
+a:hover {
+    outline: none;
+    text-decoration: none;
+}
+
+.table-hover > tbody > tr:hover {
+    background-color: #f2f8fd;
+}
+
+
+/*header*/
+
+
+/*footer*/

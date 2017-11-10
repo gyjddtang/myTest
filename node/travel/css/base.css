@@ -1,0 +1,363 @@
+/*重置*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+ol,
+li,
+img,
+a,
+em,
+strong,
+form,
+input,
+textarea,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-decoration: none;
+    font-style: normal;
+    font-weight: normal;
+    list-style: none;
+}
+
+textarea {
+    resize: none;
+}
+
+
+/* ui-base */
+
+.space-w {
+    width: 100%;
+}
+
+.space-h {
+    height: 100%;
+}
+
+.space {
+    padding: .9375rem;
+}
+
+.space-p {
+    /*padding: 0 1.25rem;*/
+    padding: 0 .9375rem;
+}
+
+.mt10 {
+    margin-top: .625rem;
+}
+
+.mt15 {
+    margin-top: .9375rem;
+}
+
+.mt20 {
+    margin-top: 1.25rem;
+}
+
+.mt30 {
+    margin-top: 1.875rem;
+}
+
+.mt40 {
+    margin-top: 2.5rem;
+}
+
+.mt50 {
+    margin-top: 3.125rem;
+}
+
+.mt60 {
+    margin-top: 3.75rem;
+}
+
+.mr5 {
+    margin-right: .3125rem;
+}
+
+.mr10 {
+    margin-right: .625rem;
+}
+
+.mr20 {
+    margin-right: 1.25rem;
+}
+
+.pt20 {
+    padding-top: 1.25rem;
+}
+
+.pt40 {
+    padding-top: 2.5rem;
+}
+
+.pb40 {
+    padding-bottom: 2.5rem;
+}
+
+
+/*边框*/
+
+.bd {
+    border: 1px solid;
+}
+
+.bdt {
+    border-top: 1px solid;
+}
+
+.bdb {
+    border-bottom: 1px solid;
+}
+
+.dbl {
+    border-left: 1px solid;
+}
+
+.dbr {
+    border-right: 1px solid;
+}
+
+
+/* ui-color */
+
+.theme-bc {
+    background-color: #182a44;
+}
+
+.theme-bd {
+    border-color: #182a44 !important;
+}
+
+.theme-tx {
+    color: #182a44;
+}
+
+.tx-white {
+    color: white;
+}
+
+.bc-white {
+    background: white;
+}
+
+.tx1 {
+    color: #b2b2b2;
+}
+
+.tx2 {
+    color: rgba(0, 0, 0, .58);
+}
+
+.tx3 {
+    color: #9DA1A7;
+}
+
+.bd1 {
+    border-color: #E0E0E0 !important;
+}
+
+.bd2 {
+    border-color: #F7F7F7 !important;
+}
+
+
+/* ui-font */
+
+html {
+    font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.ft32 {
+    font-size: 2rem;
+}
+
+.ft30 {
+    font-size: 1.875rem;
+}
+
+.ft28 {
+    font-size: 1.75rem;
+}
+
+.ft26 {
+    font-size: 1.625rem;
+}
+
+.ft24 {
+    font-size: 1.5rem;
+}
+
+.ft22 {
+    font-size: 1.375rem;
+}
+
+.ft20 {
+    font-size: 1.25rem;
+}
+
+.ft18 {
+    font-size: 1.125rem;
+}
+
+.ft17 {
+    font-size: 1.0625rem;
+}
+
+.ft16 {
+    font-size: 1rem;
+}
+
+.ft14 {
+    font-size: .875rem;
+}
+
+.ft12 {
+    font-size: .75rem;
+}
+
+.ln30 {
+    line-height: 1.875rem;
+}
+
+.ln24 {
+    line-height: 1.5rem;
+}
+
+.tx-oe {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap !important;
+}
+
+.tx-en {
+    word-break: break-all;
+}
+
+.tx-c {
+    text-align: center;
+}
+
+.tx-l {
+    text-align: left;
+}
+
+.tx-r {
+    text-align: right;
+}
+
+
+/*弹性盒子*/
+
+.f-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.f-box-dc {
+    flex-direction: column;
+}
+
+.f-box-dr {
+    flex-direction: row-reverse;
+}
+
+.f-box-jc {
+    justify-content: center;
+}
+
+.f-box-js {
+    justify-content: flex-start;
+}
+
+.f-box-je {
+    justify-content: flex-end;
+}
+
+.f-box-jsa {
+    justify-content: space-around;
+}
+
+.f-box-as {
+    align-items: flex-start;
+}
+
+.f-box-ae {
+    align-items: flex-end
+}
+
+.f-box-jsa {
+    justify-content: space-around;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+
+/*兼容手机 UC浏览器*/
+
+@media screen and (max-width: 768px) {
+    .f-box {
+        display: -webkit-box;
+        -webkit-box-lines: multiple;
+        -webkit-box-pack: justify;
+        -webkit-box-align: center;
+    }
+    .f-box-dc {
+        -webkit-box-orient: vertical;
+    }
+    .f-box-dr {
+        -webkit-box-direction: reverse;
+    }
+    .f-box-jc {
+        -webkit-box-pack: center;
+    }
+    .f-box-js {
+        -webkit-box-pack: start;
+    }
+    .f-box-je {
+        -webkit-box-pack: end;
+    }
+    .f-box-as {
+        -webkit-box-align: start;
+    }
+    .f-box-ac {
+        -webkit-box-align: center;
+    }
+    .f-box-ae {
+        -webkit-box-align: end;
+    }
+    .flex-1 {
+        -webkit-box-flex: 1;
+    }
+}
+
+
+/*base*/
+
+.block-c {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.hide {
+    display: none !important;
+}

@@ -6,7 +6,8 @@
 
 let fs = require('fs')
 
-fs.stat('img-fs.jpg', (err, stat) => {
+// 返回一个Stat对象, 文件或目录的详细信息
+fs.stat('travel/images/img.png', (err, stat) => {
   if (err) {
     console.log(err)
   } else {
@@ -22,6 +23,8 @@ fs.stat('img-fs.jpg', (err, stat) => {
       console.log('birth time: ' + stat.birthtime)
       // 修改时间, Date对象:
       console.log('modified time: ' + stat.mtime)
+    } else {
+      console.log(stat)
     }
   }
 })
