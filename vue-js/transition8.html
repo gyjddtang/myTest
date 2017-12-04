@@ -52,18 +52,17 @@
 <body>
   <div id="demo">
     <div class="listBox">
-      <transition-group
-        tag="ul"
-        :name="listName"
-      >
-        <!----
-        -- v-if：DOM结构不存在，快速切换不影响
-        -- v-show：DOM结构已经存在，两个选项快速切换时，因为key值相同，导致原DOM没销毁，出现平移现象
-        ---->
-        <li v-for="(item, index) of list" v-if="index + 1 === initCurrent" :key="index">
-          {{ item }}
-        </li>
-      </transition-group>
+      <ul>
+        <transition :name="listName">
+          <!----
+          -- v-if：DOM结构不存在，快速切换不影响
+          -- v-show：DOM结构已经存在，两个选项快速切换时，因为key值相同，导致原DOM没销毁，出现平移现象
+          ---->
+          <li v-for="(item, index) of list" v-if="index + 1 === initCurrent" :key="index">
+            {{ item }}
+          </li>
+        </transition>
+      </ul>
     </div>
     <button @click="prev">prev</button>
     <button @click="next">next</button>
@@ -71,12 +70,12 @@
 
   <script src="js/vue2.3.0.js"></script>
   <script>
-    var listData = [1, 2]
+    var listData = [1, 2, 3, 4, 5]
     var vm = new Vue({
       el: '#demo',
       data: {
         list: [],
-        initCurrent: 1,
+        initCurrent: 3,
         listName: 'list-init'
       },
       mounted () {
