@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Created by MiliGao on 2018/1/10. -->
+  <meta charset="UTF-8">
+  <title>service</title>
+  <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+  <div ng-app="myApp" ng-controller="myCtrl">
+    <p>location.absUrl(): {{ myUrl }}</p>
+    <hr>
+    <p>timeout: {{ myHeader }}</p>
+    <hr>
+    <p>interval: {{ theTime | date: 'hh:mm:ss' }}</p>
+    <hr>
+    <p>自定义服务：{{ serviceStr }}</p>
+    <p>过滤器中使用自定义服务：{{ 255 | myFormat }}</p>
+    <hr>
+    <input ng-model="textInput" type="text">
+    <p>watch: {{ textInput }}</p>
+  </div>
+
+  <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope, $location, $http, $timeout, $interval, appService) {   // $location 服务是作为一个参数传递到 controller 中。如果要使用它，需要在 controller 中定义。
+      $scope.myUrl = $location.absUrl();
+
+      $scope.myHeader = "Hello World!";
+      $timeout(function () {
+        $scope.myHeader = "How are you today?";
+      }, 2000);
+
+      $scope.theTime = new Date();
+      $interval(function () {
+        $scope.theTime = new Date();
+      }, 1000);
+
+      $scope.serviceStr = appService.myFunc(255);
+
+      $scope.textInput = '';
+      $scope.$watch('textInput', function (val) {
+        console.log(val);
+      });
+    });
+
+    // 要使用自定义服务，需要在定义控制器的时候独立添加，设置依赖关系.
+    app.service('appService', function () {
+      this.myFunc = function (x) {
+        return x.toString(16);
+      };
+    });
+
+    app.filter('myFormat',['appService', function(appService) {
+      return function(x) {
+        return appService.myFunc(x);
+      };
+    }]);
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>$scope</title>
+  <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+  <div>rootscope中的值是{{$root.lastname}}</div>
+
+  <div ng-controller="myCtrl">
+    <input ng-model="name">
+    <h1>{{greeting}}</h1>
+    <button ng-click='sayHello()'>点我</button>
+  </div>
+
+  <div ng-controller="myCtrl_1">
+    <h1>姓氏为 {{lastname}} 家族成员:</h1>
+    <ul>
+      <li ng-repeat="x in names">{{x}} {{lastname}}</li>
+    </ul>
+  </div>
+
+  <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope, $rootScope) {
+      $scope.name = 'miliGao';
+      $rootScope.lastname = 'Angular';
+      $scope.sayHello = function () {
+        $scope.greeting = 'Hello ' + $scope.name + '!';
+      }
+    });
+
+    app.controller('myCtrl_1', function($scope) {
+      $scope.names = ["Emil", "Tobias", "Linus"];
+    });
+  </script>
+</body>
+</html>

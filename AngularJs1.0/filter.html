@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>过滤器</title>
+  <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+  <p>姓名：{{ name | uppercase }}</p>
+  <p>姓名：{{ name | lowercase }}</p>
+  <hr>
+
+  <p>人民币：{{ money | currency: "￥" }}</p>
+  <hr>
+
+  <p>截取：{{ '你好分局减肥减肥看粉丝嗯' | limitTo: 6 }}</p>
+  <hr>
+
+  排序：
+  <ul>
+    <li ng-repeat="item in lists | orderBy: 'age': true">  <!-- 生序 orderBy: 'age' -->
+      {{ item.name }} is {{ item.age }} years old.
+    </li>
+  </ul>
+  <hr>
+
+  <p>时间：{{ number | date: "yyyy/MM/dd HH:mm:ss" }}</p>
+  <hr>
+
+  <p>保留小数位数：{{ 875.577686764 | number: 2 }}</p>
+  <hr>
+
+  filter查找：
+  <p><input type="text" ng-model="test"></p>
+  <ul>
+    <li ng-repeat="name in names | filter: { firstName: test}">   <!-- filter: test -->
+      {{ name.firstName + ' ' + name.lastName }}
+    </li>
+  </ul>
+  <hr>
+  <p>自定义：{{ name | reverse }}</p>
+
+  <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope) {
+      $scope.test = '';
+      $scope.name = 'miliGao';
+      $scope.number = new Date();
+      $scope.money = 299;
+      $scope.lists = [{
+        name: 'gao',
+        age: 22
+      }, {
+        name: 'yuan',
+        age: 18
+      }, {
+        name: 'jie',
+        age: 27
+      }];
+
+      $scope.names = [{
+        firstName: 'Kai',
+        lastName: 'Denmark'
+      }, {
+        firstName: 'Glok',
+        lastName: 'Norway'
+      }, {
+        firstName: 'Dimb',
+        lastName: 'Sweden'
+      }]
+    });
+
+    app.filter('reverse', function() {   // 可以注入依赖
+      return function(text) {
+        return text.split("").reverse().join("");
+      }
+    });
+  </script>
+</body>
+</html>

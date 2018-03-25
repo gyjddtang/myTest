@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ng-model</title>
+  <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+  <style>
+    /** ng-model 指令根据表单域的状态添加/移除以下类：
+
+        ng-empty
+        ng-not-empty
+        ng-touched
+        ng-untouched
+        ng-valid
+        ng-invalid
+        ng-dirty
+        ng-pending
+        ng-pristine
+    **/
+    .emialInput.ng-invalid {
+      background: lightcoral;
+    }
+
+    .emialInput.ng-valid {
+      background: lightcyan;
+    }
+  </style>
+</head>
+<body>
+  <form name="myForm" ng-app="" ng-init="email = 'test@runoob.com'">
+    <input name="myEmail" ng-model="email" type="email" required class="emialInput">
+
+    <p>编辑邮箱地址，查看状态的改变。</p>
+    <h1>状态</h1>
+    <p>Valid: {{myForm.myEmail.$valid}} (如果输入的值是合法的则为 true)。</p>
+    <p>Dirty: {{myForm.myEmail.$dirty}} (如果值改变则为 true)。</p>
+    <p>Touched: {{myForm.myEmail.$touched}} (如果通过触屏点击则为 true)。</p>
+    <p>Error: {{myForm.myEmail.$error}} </p>
+
+    <!--
+      ng-invalid: 未通过验证的表单
+      ng-valid: 布尔型属性，它指示表单是否通过验证。如果表单当前通过验证，他将为true
+      ng-dirty: 布尔值属性，表示用户是否修改了表单。如果为 ture，表示有修改过；false 表示修没有修改过
+      ng-touched: 布尔值属性，表示用户是否和控件进行过交互
+      ng-pristine: 布尔值属性，表示用户是否修改了表单。如果为ture，表示没有修改过；false表示修改过
+    -->
+  </form>
+</body>
+</html>
