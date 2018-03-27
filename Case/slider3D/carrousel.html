@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旋转木马</title>
+    <link rel="stylesheet" href="css/carrousel.css">
+</head>
+<body>
+    <div class="container">
+        <ul class="carrousel">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <div class="operate">
+        <button class="to-left">向左</button>
+        <button class="to-right">向右</button>
+    </div>
+
+    <script src="js/jquery-v3.3.1.js"></script>
+    <script>
+        var n = 0;
+        $('.to-left').click(function () {
+            n--;
+            $('.carrousel').css('transform', `rotateY(${n * 45}deg)`);
+        });
+        $('.to-right').click(function () {
+            n++;
+            $('.carrousel').css('transform', `rotateY(${n * 45}deg)`);
+        });
+    </script>
+</body>
+</html>
