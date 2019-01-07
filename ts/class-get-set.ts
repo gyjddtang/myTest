@@ -14,7 +14,7 @@ class animal {
   }
 
   set name(val: string) {
-    if(psd && psd == 123456) {
+    if(psd === 123456) {
       this._name = val;
     } else {
       console.log('Error: Unauthorized update of employee!');

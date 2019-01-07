@@ -2,6 +2,8 @@
  * Created by MiliGao on 2017/12/29.
  */
 
+// 派生类包含了一个构造函数，它 必须调用 super()，它会执行基类的构造函数。 而且，在构造函数里访问 this的属性之前，我们 一定要调用 super()。
+
 class animal {
   name: string;
   constructor(name: string) {

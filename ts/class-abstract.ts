@@ -2,6 +2,8 @@
  * Created by MiliGao on 2017/12/29.
  */
 
+// 抽象类做为其它派生类的基类使用。 它们一般不会直接被实例化
+
 abstract class animal {
   constructor(public name: string) {}
 

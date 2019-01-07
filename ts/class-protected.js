@@ -2,9 +2,12 @@
  * Created by MiliGao on 2017/12/29.
  */
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -25,11 +28,11 @@ var dog = /** @class */ (function (_super) {
     function dog(name) {
         return _super.call(this, name) || this;
     }
-    dog.prototype.instroduce = function () {
+    dog.prototype.introduce = function () {
         console.log("from subClass: my name is " + this.name); // protected 成员在派生类中仍然可以访问。
     };
     return dog;
 }(animal));
-var horse = new animal('horse');
+// let horse: animal = new animal('horse');   // 构造函数也可以被标记成 protected。 这意味着这个类不能在包含它的类外被实例化，但是能被继承。
 var dog1 = new dog('dog');
 dog1.introduce();

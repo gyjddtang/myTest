@@ -1,6 +1,7 @@
 /**
  * Created by MiliGao on 2017/12/29.
  */
+//存取器要求你将编译器设置为输出ECMAScript 5或更高。
 var psd = 123456;
 var animal = /** @class */ (function () {
     function animal() {
@@ -10,7 +11,7 @@ var animal = /** @class */ (function () {
             return this._name;
         },
         set: function (val) {
-            if (psd && psd == 123456) {
+            if (psd === 123456) {
                 this._name = val;
             }
             else {

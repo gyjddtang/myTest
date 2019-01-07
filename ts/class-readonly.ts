@@ -15,7 +15,7 @@ console.log(cat.name);
 
 
 class human {
-  constructor(private name: string) {}   // 参数属性 可以方便地让我们在一个地方定义并初始化一个成员。
+  constructor(public name: string) {}   // 参数属性 可以方便地让我们在一个地方定义并初始化一个成员。
   instroduce() {
     console.log(`my name is ${this.name}`);
   }
