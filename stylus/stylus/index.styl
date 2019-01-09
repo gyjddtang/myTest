@@ -1,0 +1,47 @@
+// Created by MiliGao on 2019-01-07.
+
+*
+  margin 0
+  padding 0
+
+.hello
+  width 400px
+  color #2b542c
+  font-size 24px
+  border 1px solid #2e2e2e
+
+
+//选择器
+.aaa,
+.bbb
+  a
+    background #e4e4e4
+    &:hover
+      color #a43e6a
+
+
+//变量
+$font-size = 14px
+
+body
+  font-size $font-size
+
+.aaa
+  width 200px
+  height 200px
+  border 1px solid #8c8c8c
+  position relative
+
+  a
+    display block
+    width 80px
+    height 80px
+    background #2e6da4
+    position absolute
+    top 50%
+    left 50%
+    margin-left -(@width / 2)
+    margin-top -(@height / 2)
+
+
+//插值
