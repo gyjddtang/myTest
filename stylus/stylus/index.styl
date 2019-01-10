@@ -4,6 +4,9 @@
   margin 0
   padding 0
 
+hr
+  margin 20px 0
+
 .hello
   width 400px
   color #2b542c
@@ -11,7 +14,7 @@
   border 1px solid #2e2e2e
 
 
-//选择器
+// 选择器
 .aaa,
 .bbb
   a
@@ -20,7 +23,7 @@
       color #a43e6a
 
 
-//变量
+// 变量
 $font-size = 14px
 
 body
@@ -44,4 +47,50 @@ body
     margin-top -(@height / 2)
 
 
-//插值
+// 选择器插值
+.list1
+  text-align center
+  color white
+
+  for key in 1 2 3
+    li:nth-child({ key })
+      width 100px * key
+      background #8a6d3b
+
+
+// Mixins
+border-radius(n = 8px)
+  border-radius n   // arguments
+
+
+.box1
+  width 200px
+  height 200px
+  background #204d74
+  border-radius()
+
+
+// 内置方法
+.box2
+  background rgba(#204d74, 0.5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
