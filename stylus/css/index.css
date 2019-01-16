@@ -58,9 +58,9 @@ body {
 .box1 {
   width: 200px;
   height: 200px;
-  background: #204d74;
-  border-radius: 8px;
+  background: #cc7943;
+  border-radius: 20px;
 }
 .box2 {
-  background: rgba(32,77,116,0.5);
+  background: rgba(204,121,67,0.3);
 }
