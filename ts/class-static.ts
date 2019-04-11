@@ -21,5 +21,8 @@ class grid {
 let grid1 = new grid(1);
 let grid2 = new grid(4);
 
+// grid1.name   // ok
+// grid1.origin   // error
+
 console.log(grid1.distance({x: 10, y: 10}));
 console.log(grid2.distance({x: 30, y: 30}));
