@@ -1,0 +1,59 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg {
+  background: url(./img/bg.jpg);
+  background-position: center;
+  background-size: cover;
+  filter: blur(15px);
+  position: fixed;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  z-index: -1;
+}
+
+.mask {
+  width: 400px;
+  height: 200px;
+  background: url(./img/bg.jpg);
+  background-size: cover;
+  -webkit-mask: url(./img/text.svg);
+          mask: url(./img/text.svg);
+  -webkit-mask-size: cover;
+          mask-size: cover;
+  animation: move 40s infinite;
+}
+
+.maskB {
+  margin-top: 50px;
+  width: 700px;
+  height: 220px;
+  background: url(./img/bg.jpg);
+  background-size: cover;
+  -webkit-mask: url(./img/text.png);
+          mask: url(./img/text.png);
+  -webkit-mask-size: cover;
+          mask-size: cover;
+}
+
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+}
