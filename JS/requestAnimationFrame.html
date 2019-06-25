@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    .test {
+      width: 100px;
+      height: 100px;
+      position: fixed;
+      background: rgb(168, 226, 145);
+    }
+  </style>
+</head>
+<body>
+  <div class="test"></div>
+
+  <script>
+    var start = null;
+    var element = document.querySelector('.test');
+
+    function step(timestamp) {
+      console.log(timestamp);
+      
+      if (!start) start = timestamp;
+      var progress = timestamp - start;
+      element.style.left = Math.min(progress / 10, 200) + 'px';
+      if (progress < 2000) {
+        window.requestAnimationFrame(step);
+      }
+    }
+
+    window.requestAnimationFrame(step);
+  </script>
+</body>
+</html>
