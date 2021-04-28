@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>glow wireframe</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="618" height="618"></canvas>
+
+    <script>
+      let canvas, gl;
+      const vsSource = `
+                attribute vec4 a_Position;
+                attribute vec3 a_Barycentric;
+                varying vec3 v_Barycentric;
+
+                void main() {
+                    gl_Position = a_Position;
+                    v_Barycentric = a_Barycentric;
+                }
+              `;
+      const fsSource = `
+                #extension GL_OES_standard_derivatives : enable
+                varying mediump vec3 v_Barycentric;
+                
+                mediump float edgeFactor(){
+                    mediump vec3 d = fwidth(v_Barycentric);
+                    // 边缘平滑效果
+                    mediump vec3 a3 = smoothstep(vec3(0.0), d * 40.0, v_Barycentric);
+                    return min(min(a3.x, a3.y), a3.z);
+                }
+
+                void main() {
+                    mediump float interopter = edgeFactor();
+                    interopter = pow(interopter, 0.1);
+                    gl_FragColor.rgb = mix(vec3(1.0), vec3(1.0), interopter);
+                    gl_FragColor.a = mix(1.0, 0.0, interopter);
+                }
+              `;
+
+      function create_shader(type, source) {
+        // 用来保存着色器的变量
+        let shader = gl.createShader(type);
+        // 设置着色器的GLSL程序代码
+        gl.shaderSource(shader, source);
+        // 编译着色器
+        gl.compileShader(shader);
+
+        // 判断一下着色器是否编译成功
+        if (gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+          // 编译成功，则返回着色器
+          return shader;
+        } else {
+          // 编译失败
+          console.log(gl.getShaderInfoLog(shader));
+        }
+      }
+
+      function create_program(vs, fs) {
+        // 程序对象的生成
+        let program = gl.createProgram();
+        // 向程序对象里分配着色器
+        gl.attachShader(program, vs);
+        gl.attachShader(program, fs);
+        // 将着色器连接
+        gl.linkProgram(program);
+
+        //判断着色器的连接是否成功
+        if (gl.getProgramParameter(program, gl.LINK_STATUS)) {
+          // 成功的话，将程序对象设置为有效
+          gl.useProgram(program);
+          // 返回程序对象
+          return program;
+        } else {
+          // 如果失败
+          console.log(gl.getProgramInfoLog(program));
+        }
+      }
+
+      window.onload = init;
+
+      function init() {
+        canvas = document.getElementById("canvas");
+        gl = canvas.getContext("webgl");
+
+        // 判断浏览器是否支持webgl
+        if (!gl) {
+          return alert("您的浏览器不支持WebGL!");
+        }
+
+        gl.viewport(0, 0, canvas.width, canvas.height);
+        gl.clearColor(0.0, 0.0, 0.0, 1.0);
+        gl.clear(gl.COLOR_BUFFER_BIT); // 清除屏幕
+
+        gl.getExtension("OES_standard_derivatives");
+        // 启用混合功能
+        gl.enable(gl.DEPTH_TEST);
+        gl.enable(gl.BLEND);
+        gl.disable(gl.DEPTH_WRITEMASK);
+        // 设置混合函数
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+        // 初始化着色器
+        let v_shader = create_shader(gl.VERTEX_SHADER, vsSource);
+        let f_shader = create_shader(gl.FRAGMENT_SHADER, fsSource);
+
+        // 程序对象的生成和连接
+        let program = create_program(v_shader, f_shader);
+
+        let vertices = new Float32Array([
+          0.5,
+          0.5,
+          0.0,
+          -0.5,
+          0.5,
+          0.0,
+          0.5,
+          -0.5,
+          0.0,
+          -0.6,
+          -0.3,
+          0.0,
+          -0.8,
+          -0.9,
+          0,
+        ]);
+
+        // 创建缓存
+        let tBuffer = gl.createBuffer(); // 为矩形顶点创建缓存
+        gl.bindBuffer(gl.ARRAY_BUFFER, tBuffer); // 绑定缓冲区
+        gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW); // 向缓冲区写入顶点数据
+
+        // 获取顶点着色器中attribute变量位置
+        let a_Position = gl.getAttribLocation(program, "a_Position");
+
+        let SIZE = vertices.BYTES_PER_ELEMENT;
+        // 建立a_Position与顶点着色器attribute变量 a_Position 的关联
+        gl.vertexAttribPointer(a_Position, 3, gl.FLOAT, false, SIZE * 3, 0);
+        gl.enableVertexAttribArray(a_Position);
+
+        // 重心坐标系
+        // let barycentrics = vertices.map((v, i) => {
+        //   if (i % 9 === 0 || i % 9 === 4 || i % 9 === 8) {
+        //     return 1.0;
+        //   }
+        //   return 0.0;
+        // });
+        let barycentrics = new Float32Array([
+          1,
+          0,
+          0,
+
+          0,
+          1,
+          0,
+
+          1,
+          0,
+          1,
+
+          0,
+          1,
+          0,
+
+          0,
+          0,
+          0,
+        ]);
+
+        let bBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, bBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, barycentrics, gl.STATIC_DRAW);
+        let a_Barycentric = gl.getAttribLocation(program, "a_Barycentric");
+        gl.vertexAttribPointer(
+          a_Barycentric,
+          3,
+          gl.FLOAT,
+          false,
+          barycentrics.BYTES_PER_ELEMENT * 3,
+          0
+        );
+        gl.enableVertexAttribArray(a_Barycentric);
+
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, vertices.length / 3);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>缓冲区 - 彩色矩形</title>
+  </head>
+  <body>
+    <canvas id="Rectangle" width="618" height="618"> </canvas>
+
+    <script>
+      var canvas;
+      var gl;
+      const vsSource = `
+        attribute vec4 a_Position;
+        attribute vec4 a_Color;
+        varying vec4 v_Color;
+        void main() {
+            gl_Position = a_Position;
+            v_Color = a_Color;
+        }
+  `;
+
+      const fsSource = `
+        precision mediump float;
+        varying vec4 v_Color;
+        void main() {
+            gl_FragColor = v_Color;
+        }
+  `;
+
+      function init() {
+        canvas = document.getElementById("Rectangle"); //获取canvas元素
+        gl = canvas.getContext("webgl");
+        //判断浏览器是否支持webgl
+        if (!gl) {
+          alert("您的浏览器不支持WebGL!");
+        }
+
+        //矩形的定点数组，共4个（x,y,r,g,b）
+        var verticescolor = new Float32Array([
+          -0.5,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          -0.5,
+          0.0,
+          0.0,
+          1.0, //r,g,b,为颜色信息
+          0.0,
+          0.5,
+          1.0,
+          0.0,
+          0.0,
+          0.5,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+        ]);
+
+        //顶点顺序索引
+        // var indexV = new Uint8Array([0, 1, 2, 2, 1, 3]);
+
+        //设置窗口大小
+        gl.viewport(0, 0, canvas.width, canvas.height);
+        gl.clearColor(0.0, 0.0, 0.0, 1.0);
+
+        //初始化着色器
+        var v_shader = create_shader(gl.VERTEX_SHADER, vsSource);
+        var f_shader = create_shader(gl.FRAGMENT_SHADER, fsSource); // 程序对象的生成和连接
+
+        var program = create_program(v_shader, f_shader); //获取a_Position变量的存储位置
+        // var program = initShaders(gl, "v-shader", "f-shader");
+
+        //创建缓存
+        var tBuffer = gl.createBuffer(); //为矩形顶点创建的缓存
+        // var iBuffer = gl.createBuffer(); //为顶点索引创建的缓存
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, tBuffer); //绑定缓冲区
+        gl.bufferData(gl.ARRAY_BUFFER, verticescolor, gl.STATIC_DRAW); //向缓冲区写入顶点数据
+
+        //获取顶点着色器中attribute变量位置
+        var a_Position = gl.getAttribLocation(program, "a_Position");
+
+        var SIZE = verticescolor.BYTES_PER_ELEMENT;
+        //建立a_Position与顶点着色器attribute变量“a_Position”的关联
+        gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, SIZE * 5, 0);
+        gl.enableVertexAttribArray(a_Position);
+
+        var a_Color = gl.getAttribLocation(program, "a_Color");
+        gl.vertexAttribPointer(a_Color, 3, gl.FLOAT, false, SIZE * 5, SIZE * 2);
+        gl.enableVertexAttribArray(a_Color);
+
+        // gl.bindBuffer(gl.ARRAY_BUFFER, iBuffer); //绑定缓冲区
+        // gl.bufferData(gl.ARRAY_BUFFER, indexV, gl.STATIC_DRAW); //向缓冲区写入索引数据
+
+        render(); //执行画图函数
+      }
+
+      function render() {
+        gl.clear(gl.COLOR_BUFFER_BIT); //清除屏幕
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4); //画三角形，两个三角形拼凑成一个矩形
+      }
+      window.onload = init; //window加载init函数，最终显示矩形
+
+      function create_shader(type, source) {
+        //用来保存着色器的变量
+        var shader; //根据id从HTML中获取指定的script标签
+
+        //   var scriptElement = document.getElementById(id); //如果指定的script标签不存在，则返回
+
+        //   if (!scriptElement) {
+        //     return;
+        //   } // 判断script标签的type属性
+
+        //   debugger;
+
+        shader = gl.createShader(type);
+
+        gl.shaderSource(shader, source); //编译着色器
+
+        gl.compileShader(shader); //判断一下着色器是否编译成功
+
+        if (gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+          // 编译成功，则返回着色器
+          return shader;
+        } else {
+          // 编译失败，弹出错误消息
+          // alert(gl.getShaderInfoLog(shader));
+          console.log(gl.getShaderInfoLog(shader));
+        }
+      }
+
+      function create_program(vs, fs) {
+        //程序对象的生成
+        var program = gl.createProgram(); //向程序对象里分配着色器
+
+        gl.attachShader(program, vs);
+        gl.attachShader(program, fs); //将着色器连接
+
+        gl.linkProgram(program); //判断着色器的连接是否成功
+
+        if (gl.getProgramParameter(program, gl.LINK_STATUS)) {
+          // 成功的话，将程序对象设置为有效
+          gl.useProgram(program); // 返回程序对象
+
+          return program;
+        } else {
+          // 如果失败，弹出错误信息
+          // alert(gl.getProgramInfoLog(program));
+          console.log(gl.getProgramInfoLog(program));
+        }
+      }
+    </script>
+  </body>
+</html>
