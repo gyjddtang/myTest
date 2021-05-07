@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codeRaining</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+
+    <script type="text/javascript">
+      let timer = null;
+
+      window.onload = function () {
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        const w = document.body.clientWidth;
+        const h = document.body.clientHeight;
+
+        const fontSize = 14;
+        const colunmSpacing = 8; // 列间距
+        const rowSpacing = 2; // 行间距
+        const str = "javascripthtml5canvas"; // 文字集
+
+        canvas.width = w;
+        canvas.height = h;
+        ctx.font = `bold ${fontSize}px microsoft yahei`;
+
+        let codeRainArr = []; // 代码雨数组存储
+        const colunms = Math.ceil(w / (fontSize + colunmSpacing)); // 列数
+        const rows = Math.ceil(h / (fontSize + rowSpacing)); // 行数
+
+        function createCodeRain() {
+          for (let n = 0; n < colunms; n++) {
+            const col = [];
+            const row = rows + Math.floor(Math.random() * rows); // 随机行数
+
+            for (let i = 0; i < row; i++) {
+              const textIndex = Math.floor(Math.random() * str.length); // 随机字符位置
+              col.push({
+                x: (fontSize + colunmSpacing) * n,
+                y: (fontSize + rowSpacing) * (i + 1),
+                text: str[textIndex],
+                opacity: 0,
+              });
+            }
+
+            codeRainArr.push(col);
+          }
+        }
+
+        function codeRaining() {
+          ctx.clearRect(0, 0, w, h);
+          ctx.fillStyle = "#242424";
+          ctx.fillRect(0, 0, w, h);
+
+          codeRainArr.forEach((col) => {
+            const firstIndex = col.findIndex((ele) => ele.opacity === 1);
+
+            col.forEach((item, index) => {
+              if (index === firstIndex + 1) {
+                item.opacity = 1;
+              } else if (item.opacity > 0) {
+                item.opacity -= 0.04;
+              }
+
+              ctx.fillStyle = `rgba(0, 205, 0, ${item.opacity})`; // 颜色
+              ctx.fillText(item.text, item.x, item.y);
+            });
+          });
+
+          window.requestAnimationFrame(codeRaining);
+        }
+
+        createCodeRain();
+        // timer = setInterval(codeRaining, 40);
+        window.requestAnimationFrame(codeRaining);
+      };
+
+      window.addEventListener("unload", function () {
+        timer && clearInterval(timer);
+      });
+    </script>
+  </body>
+</html>
